@@ -1,0 +1,145 @@
+{
+  "name": "Daily new business leads → Google Sheets + Slack (Apify New Business Leads Monitor)",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": { "interval": [ { "field": "days", "triggerAtHour": 8 } ] }
+      },
+      "id": "a1b2c3d4-0001-4000-8000-000000000001",
+      "name": "Every morning at 8",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [0, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.apify.com/v2/acts/lergassy~us-business-filings/run-sync-get-dataset-items",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": { "parameters": [ { "name": "timeout", "value": "290" } ] },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({\n  preset: 'local_leads_with_phones',\n  onlyNew: true,\n  monitorStoreName: 'n8n-daily-leads',\n  maxResultsPerState: 300\n}) }}",
+        "options": { "timeout": 300000 }
+      },
+      "id": "a1b2c3d4-0002-4000-8000-000000000002",
+      "name": "Apify: run New Business Leads Monitor",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [260, 0],
+      "notes": "Change `preset` to connecticut_email_leads or funded_startups, or replace it with states/cities/signals of your own. onlyNew + monitorStoreName = only businesses not delivered before.",
+      "credentials": { "httpHeaderAuth": { "id": "", "name": "Apify API token (Header Auth: Authorization = Bearer <token>)" } }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "loose", "version": 2 },
+          "conditions": [ { "id": "c1", "leftValue": "={{ $json.type }}", "rightValue": "error", "operator": { "type": "string", "operation": "notEquals" } } ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "a1b2c3d4-0003-4000-8000-000000000003",
+      "name": "Skip error items",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [520, 0]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            { "id": "f01", "name": "Lead score", "value": "={{ $json.leadScore }}", "type": "number" },
+            { "id": "f02", "name": "Company", "value": "={{ $json.companyName }}", "type": "string" },
+            { "id": "f03", "name": "Type", "value": "={{ $json.entityCategory }}", "type": "string" },
+            { "id": "f04", "name": "Industry", "value": "={{ ($json.industryTags || []).join(', ') }}", "type": "string" },
+            { "id": "f05", "name": "Registered", "value": "={{ $json.formationDate }}", "type": "string" },
+            { "id": "f06", "name": "Address", "value": "={{ $json.address }}", "type": "string" },
+            { "id": "f07", "name": "City", "value": "={{ $json.city }}", "type": "string" },
+            { "id": "f08", "name": "State", "value": "={{ $json.region }}", "type": "string" },
+            { "id": "f09", "name": "ZIP", "value": "={{ $json.postalCode }}", "type": "string" },
+            { "id": "f10", "name": "Contact", "value": "={{ $json.contactName }}", "type": "string" },
+            { "id": "f11", "name": "Contact type", "value": "={{ $json.contactType }}", "type": "string" },
+            { "id": "f12", "name": "Phone", "value": "={{ $json.contactPhone }}", "type": "string" },
+            { "id": "f13", "name": "Email", "value": "={{ $json.contactEmail }}", "type": "string" },
+            { "id": "f14", "name": "Website", "value": "={{ $json.website }}", "type": "string" },
+            { "id": "f15", "name": "Raised (USD)", "value": "={{ $json.fundingAmountSold }}", "type": "number" },
+            { "id": "f16", "name": "Source", "value": "={{ $json.sourceName }}", "type": "string" },
+            { "id": "f17", "name": "Summary", "value": "={{ $json.summary }}", "type": "string" },
+            { "id": "f18", "name": "Record", "value": "={{ $json.sourceUrl }}", "type": "string" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a1b2c3d4-0004-4000-8000-000000000004",
+      "name": "Pick spreadsheet columns",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [780, 0]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": { "__rl": true, "mode": "list", "value": "" },
+        "sheetName": { "__rl": true, "mode": "list", "value": "" },
+        "columns": { "mappingMode": "autoMapInputData", "value": {}, "matchingColumns": [], "schema": [] },
+        "options": {}
+      },
+      "id": "a1b2c3d4-0005-4000-8000-000000000005",
+      "name": "Append to Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [1040, -120],
+      "notes": "Pick your spreadsheet and sheet. Column headers are created from the field names on the first run."
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "id": "a1b2c3d4-0006-4000-8000-000000000006",
+      "name": "Collect for digest",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [1040, 120]
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": { "__rl": true, "mode": "list", "value": "" },
+        "text": "={{ `*${$json.data.length} new business leads this morning*\\n` + $json.data.slice(0, 10).map(l => `• ${l.Summary}`).join('\\n') + ($json.data.length > 10 ? `\\n…and ${$json.data.length - 10} more in the sheet` : '') }}",
+        "otherOptions": {}
+      },
+      "id": "a1b2c3d4-0007-4000-8000-000000000007",
+      "name": "Slack digest",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.2,
+      "position": [1300, 120],
+      "notes": "Optional — delete this branch if you do not use Slack."
+    },
+    {
+      "parameters": {
+        "content": "## Daily new business leads\n\n1. **Apify** node: add a *Header Auth* credential — name `Authorization`, value `Bearer <your Apify API token>` (Apify Console → Settings → API & Integrations).\n2. Change `preset` in the Apify node if you want Connecticut email leads or funded startups, or replace it with your own `states` / `cities` / `signals` / `industries` / `near`.\n3. **Google Sheets**: connect your Google account and pick a spreadsheet + sheet.\n4. **Slack**: optional, pick a channel or delete the branch.\n\nMonitor mode (`onlyNew`) remembers what was delivered, so every run adds only businesses you have not seen. Actor: https://apify.com/lergassy/us-business-filings",
+        "height": 340,
+        "width": 520
+      },
+      "id": "a1b2c3d4-0008-4000-8000-000000000008",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [0, -420]
+    }
+  ],
+  "connections": {
+    "Every morning at 8": { "main": [ [ { "node": "Apify: run New Business Leads Monitor", "type": "main", "index": 0 } ] ] },
+    "Apify: run New Business Leads Monitor": { "main": [ [ { "node": "Skip error items", "type": "main", "index": 0 } ] ] },
+    "Skip error items": { "main": [ [ { "node": "Pick spreadsheet columns", "type": "main", "index": 0 } ] ] },
+    "Pick spreadsheet columns": { "main": [ [ { "node": "Append to Google Sheets", "type": "main", "index": 0 }, { "node": "Collect for digest", "type": "main", "index": 0 } ] ] },
+    "Collect for digest": { "main": [ [ { "node": "Slack digest", "type": "main", "index": 0 } ] ] }
+  },
+  "settings": { "executionOrder": "v1" },
+  "pinData": {},
+  "meta": { "templateCredsSetupCompleted": false }
+}
