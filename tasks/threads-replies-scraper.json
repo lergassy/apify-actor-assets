@@ -1,0 +1,181 @@
+{
+  "actor": "lergassy~threads-replies-scraper",
+  "tasks": [
+    {
+      "name": "all-replies-under-a-post",
+      "title": "Get all replies under a Threads post",
+      "description": "Paste a post link and get the whole reply thread with text, author and engagement.",
+      "input": {
+        "mode": "thread",
+        "postUrls": [
+          "https://www.threads.net/@mkbhd/post/DdFHeWKimvY"
+        ],
+        "maxRepliesPerPost": 100
+      },
+      "datasetView": "posts",
+      "inputSchemaFields": [
+        "mode",
+        "postUrls",
+        "maxRepliesPerPost"
+      ]
+    },
+    {
+      "name": "threads-conversation-with-replies",
+      "title": "Scrape a whole Threads conversation",
+      "description": "The original post plus its replies in one dataset, in the order the conversation happened.",
+      "input": {
+        "mode": "thread",
+        "postUrls": [
+          "https://www.threads.net/@mkbhd/post/DdRzMfaEXq5"
+        ],
+        "maxRepliesPerPost": 200
+      },
+      "datasetView": "posts",
+      "inputSchemaFields": [
+        "mode",
+        "postUrls",
+        "maxRepliesPerPost"
+      ]
+    },
+    {
+      "name": "what-an-account-replies-to",
+      "title": "See what an account replies to",
+      "description": "The replies an account leaves on other people's posts — useful for competitor and community research.",
+      "input": {
+        "mode": "replies",
+        "usernames": [
+          "zuck"
+        ],
+        "maxPosts": 100
+      },
+      "datasetView": "posts",
+      "inputSchemaFields": [
+        "mode",
+        "usernames",
+        "maxPosts"
+      ]
+    },
+    {
+      "name": "threads-reposts-of-an-account",
+      "title": "Collect the reposts of a Threads account",
+      "description": "What an account amplifies rather than writes: its reposts with the original author and text.",
+      "input": {
+        "mode": "reposts",
+        "usernames": [
+          "natgeo"
+        ],
+        "maxPosts": 100
+      },
+      "datasetView": "posts",
+      "inputSchemaFields": [
+        "mode",
+        "usernames",
+        "maxPosts"
+      ]
+    },
+    {
+      "name": "replies-from-several-accounts",
+      "title": "Replies from several accounts at once",
+      "description": "A list of accounts, their replies merged into one dataset for comparison.",
+      "input": {
+        "mode": "replies",
+        "usernames": [
+          "nike",
+          "adidas"
+        ],
+        "maxPosts": 50,
+        "includeProfile": true
+      },
+      "datasetView": "posts",
+      "inputSchemaFields": [
+        "mode",
+        "usernames",
+        "maxPosts",
+        "includeProfile"
+      ]
+    },
+    {
+      "name": "recent-replies-since-a-date",
+      "title": "Only replies posted since a date",
+      "description": "Set a start date and get just the new replies — the shape you want for a daily schedule.",
+      "input": {
+        "mode": "replies",
+        "usernames": [
+          "zuck"
+        ],
+        "maxPosts": 100,
+        "postedAfter": "2026-09-01"
+      },
+      "datasetView": "posts",
+      "inputSchemaFields": [
+        "mode",
+        "usernames",
+        "maxPosts",
+        "postedAfter"
+      ]
+    },
+    {
+      "name": "replies-mentioning-a-keyword",
+      "title": "Replies that mention your keyword",
+      "description": "Scrape replies and keep only those containing your words — complaints, a product name, a city.",
+      "input": {
+        "mode": "replies",
+        "usernames": [
+          "nike"
+        ],
+        "maxPosts": 200,
+        "filterKeywords": [
+          "shipping",
+          "refund"
+        ]
+      },
+      "datasetView": "posts",
+      "inputSchemaFields": [
+        "mode",
+        "usernames",
+        "maxPosts",
+        "filterKeywords"
+      ]
+    },
+    {
+      "name": "reply-authors-with-profiles",
+      "title": "Reply authors with their profiles",
+      "description": "Every reply plus a full profile row for the person who wrote it: followers, bio and links.",
+      "input": {
+        "mode": "thread",
+        "postUrls": [
+          "https://www.threads.net/@zuck/post/Dcy_A8pGo-m"
+        ],
+        "maxRepliesPerPost": 100,
+        "includeProfile": true,
+        "includeProfileDetails": true
+      },
+      "datasetView": "profiles",
+      "inputSchemaFields": [
+        "mode",
+        "postUrls",
+        "maxRepliesPerPost",
+        "includeProfile",
+        "includeProfileDetails"
+      ]
+    },
+    {
+      "name": "media-in-replies",
+      "title": "Images and video posted in replies",
+      "description": "Replies that carry media, with direct file URLs — memes, screenshots and proof shots.",
+      "input": {
+        "mode": "thread",
+        "postUrls": [
+          "https://www.threads.net/@natgeo/post/DdRSOdDjetX"
+        ],
+        "maxRepliesPerPost": 100
+      },
+      "datasetView": "media",
+      "inputSchemaFields": [
+        "mode",
+        "postUrls",
+        "maxRepliesPerPost"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "actor": "lergassy~tennis-scores-api",
+  "tasks": [
+    {
+      "name": "live-tennis-scores",
+      "title": "Live tennis scores right now",
+      "description": "Matches in play across ATP and WTA with the current set and game score.",
+      "input": {
+        "mode": "live",
+        "tours": [
+          "atp",
+          "wta"
+        ],
+        "matchType": "all"
+      },
+      "datasetView": "matches",
+      "inputSchemaFields": [
+        "mode",
+        "tours",
+        "matchType"
+      ]
+    },
+    {
+      "name": "tennis-schedule-for-the-week",
+      "title": "Tennis schedule for the week ahead",
+      "description": "Seven days of fixtures with tournament, round and start time.",
+      "input": {
+        "mode": "schedule",
+        "days": 7,
+        "tours": [
+          "atp",
+          "wta"
+        ],
+        "status": "upcoming"
+      },
+      "datasetView": "matches",
+      "inputSchemaFields": [
+        "mode",
+        "days",
+        "tours",
+        "status"
+      ]
+    },
+    {
+      "name": "match-statistics-of-a-tennis-match",
+      "title": "Match statistics for a finished match",
+      "description": "Aces, winners, break points and the point-by-point trail for a single match.",
+      "input": {
+        "mode": "schedule",
+        "days": 1,
+        "tours": [
+          "atp"
+        ],
+        "status": "finished",
+        "includeStatistics": true
+      },
+      "datasetView": "matches",
+      "inputSchemaFields": [
+        "mode",
+        "days",
+        "tours",
+        "status",
+        "includeStatistics"
+      ]
+    },
+    {
+      "name": "tennis-tournament-draw",
+      "title": "The draw of a tennis tournament",
+      "description": "Bracket rows with seeds and results as the rounds fill in.",
+      "input": {
+        "mode": "schedule",
+        "days": 3,
+        "tours": [
+          "atp"
+        ],
+        "includeDraw": true
+      },
+      "datasetView": "draw",
+      "inputSchemaFields": [
+        "mode",
+        "days",
+        "tours",
+        "includeDraw"
+      ]
+    },
+    {
+      "name": "doubles-matches-only",
+      "title": "Doubles matches only",
+      "description": "Filter the schedule to doubles when that is the market you trade or the sheet you run.",
+      "input": {
+        "mode": "schedule",
+        "days": 7,
+        "tours": [
+          "atp",
+          "wta"
+        ],
+        "matchType": "doubles"
+      },
+      "datasetView": "matches",
+      "inputSchemaFields": [
+        "mode",
+        "days",
+        "tours",
+        "matchType"
+      ]
+    }
+  ]
+}

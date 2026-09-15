@@ -1,0 +1,72 @@
+{
+  "actor": "lergassy~us-business-filings",
+  "tasks": [
+    {
+      "name": "new-businesses-in-texas",
+      "title": "New business registrations in Texas",
+      "description": "Fresh filings in one state with address, agent and whatever contact details exist.",
+      "input": {
+        "preset": "custom",
+        "states": [
+          "TX"
+        ],
+        "newFormationsOnly": true,
+        "maxResultsPerState": 50,
+        "requireContact": true
+      },
+      "datasetView": "filings",
+      "inputSchemaFields": [
+        "preset",
+        "states",
+        "newFormationsOnly",
+        "maxResultsPerState",
+        "requireContact"
+      ]
+    },
+    {
+      "name": "new-businesses-in-a-city",
+      "title": "New businesses in specific cities",
+      "description": "Narrow the filings to the cities you actually sell in.",
+      "input": {
+        "preset": "custom",
+        "states": [
+          "CA"
+        ],
+        "cities": [
+          "San Diego",
+          "Sacramento"
+        ],
+        "newFormationsOnly": true,
+        "maxResultsPerState": 50
+      },
+      "datasetView": "filings",
+      "inputSchemaFields": [
+        "preset",
+        "states",
+        "cities",
+        "newFormationsOnly",
+        "maxResultsPerState"
+      ]
+    },
+    {
+      "name": "sec-funding-signals",
+      "title": "Companies that just filed a funding form",
+      "description": "Form D, Form C and Reg A filings — companies with money and a reason to buy.",
+      "input": {
+        "preset": "funded_startups",
+        "signals": [
+          "EDGAR_FORM_D",
+          "EDGAR_FORM_C",
+          "EDGAR_FORM_1A"
+        ],
+        "maxResultsPerState": 50
+      },
+      "datasetView": "signals",
+      "inputSchemaFields": [
+        "preset",
+        "signals",
+        "maxResultsPerState"
+      ]
+    }
+  ]
+}

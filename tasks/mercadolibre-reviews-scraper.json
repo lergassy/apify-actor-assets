@@ -1,0 +1,91 @@
+{
+  "actor": "lergassy~mercadolibre-reviews-scraper",
+  "tasks": [
+    {
+      "name": "mercadolibre-products-in-argentina",
+      "title": "Search Mercado Libre in Argentina",
+      "description": "Argentine listings with price, condition, shipping and seller.",
+      "input": {
+        "mode": "search",
+        "country": "AR",
+        "searchTerms": [
+          "notebook"
+        ],
+        "maxItems": 50
+      },
+      "datasetView": "products",
+      "inputSchemaFields": [
+        "mode",
+        "country",
+        "searchTerms",
+        "maxItems"
+      ]
+    },
+    {
+      "name": "used-listings-only",
+      "title": "Only used listings",
+      "description": "The second-hand market on its own, useful for pricing and for arbitrage.",
+      "input": {
+        "mode": "search",
+        "country": "MX",
+        "searchTerms": [
+          "iphone 15"
+        ],
+        "condition": "used",
+        "maxItems": 50
+      },
+      "datasetView": "products",
+      "inputSchemaFields": [
+        "mode",
+        "country",
+        "searchTerms",
+        "condition",
+        "maxItems"
+      ]
+    },
+    {
+      "name": "listings-with-free-shipping",
+      "title": "Listings with free shipping",
+      "description": "Filter to free-shipping offers so the prices you compare are the prices buyers pay.",
+      "input": {
+        "mode": "search",
+        "country": "MX",
+        "searchTerms": [
+          "airpods"
+        ],
+        "freeShippingOnly": true,
+        "maxItems": 50
+      },
+      "datasetView": "products",
+      "inputSchemaFields": [
+        "mode",
+        "country",
+        "searchTerms",
+        "freeShippingOnly",
+        "maxItems"
+      ]
+    },
+    {
+      "name": "newest-product-reviews",
+      "title": "Newest reviews of a product",
+      "description": "Reviews sorted by date, so quality problems show up while they are still current.",
+      "input": {
+        "mode": "reviews",
+        "country": "MX",
+        "searchTerms": [
+          "iphone 15"
+        ],
+        "reviewsSort": "date_desc",
+        "maxReviewsPerProduct": 100
+      },
+      "datasetView": "reviews",
+      "inputSchemaFields": [
+        "mode",
+        "country",
+        "searchTerms",
+        "reviewsSort",
+        "maxReviewsPerProduct"
+      ]
+    }
+  ]
+}

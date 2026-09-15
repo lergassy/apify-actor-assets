@@ -1,0 +1,141 @@
+{
+  "actor": "lergassy~email-finder-api",
+  "tasks": [
+    {
+      "name": "find-the-email-of-a-company-founder",
+      "title": "Find the email of a company founder",
+      "description": "Give a name and the company domain, get the most likely work address plus the pattern it follows.",
+      "input": {
+        "people": [
+          "Patrick Collison, stripe.com"
+        ],
+        "candidatesPerPerson": 3,
+        "checkMx": true
+      },
+      "datasetView": "emails",
+      "inputSchemaFields": [
+        "people",
+        "candidatesPerPerson",
+        "checkMx"
+      ]
+    },
+    {
+      "name": "build-an-email-list-from-a-prospect-list",
+      "title": "Build an email list from a prospect list",
+      "description": "Paste your prospects as name plus company and get a verified-domain address for each one.",
+      "input": {
+        "people": [
+          "Jason Fried, basecamp.com",
+          "Patrick Collison, stripe.com",
+          "Melanie Perkins, canva.com"
+        ],
+        "candidatesPerPerson": 2,
+        "checkMx": true
+      },
+      "datasetView": "emails",
+      "inputSchemaFields": [
+        "people",
+        "candidatesPerPerson",
+        "checkMx"
+      ]
+    },
+    {
+      "name": "find-emails-with-mx-verification",
+      "title": "Find emails and check the mail domain",
+      "description": "Every address is returned with an MX check, so you do not burn sender reputation on dead domains.",
+      "input": {
+        "people": [
+          "Jason Fried, basecamp.com"
+        ],
+        "candidatesPerPerson": 5,
+        "checkMx": true
+      },
+      "datasetView": "emails",
+      "inputSchemaFields": [
+        "people",
+        "candidatesPerPerson",
+        "checkMx"
+      ]
+    },
+    {
+      "name": "several-email-guesses-per-person",
+      "title": "Get several address guesses per person",
+      "description": "When one pattern is not enough: up to five ranked candidates per contact with a confidence score.",
+      "input": {
+        "people": [
+          "Maria Bennett, clearbit.com"
+        ],
+        "candidatesPerPerson": 5,
+        "checkMx": true
+      },
+      "datasetView": "emails",
+      "inputSchemaFields": [
+        "people",
+        "candidatesPerPerson",
+        "checkMx"
+      ]
+    },
+    {
+      "name": "emails-with-company-details",
+      "title": "Emails plus a company row for each domain",
+      "description": "One row per person and one per company, with the email pattern the company actually uses.",
+      "input": {
+        "people": [
+          "Jason Fried, basecamp.com",
+          "Patrick Collison, stripe.com"
+        ],
+        "includeCompanyRows": true,
+        "checkMx": true
+      },
+      "datasetView": "companies",
+      "inputSchemaFields": [
+        "people",
+        "includeCompanyRows",
+        "checkMx"
+      ]
+    },
+    {
+      "name": "find-emails-from-structured-records",
+      "title": "Find emails from structured records",
+      "description": "Feed first name, last name and domain as JSON — the shape another Actor or your CRM export produces.",
+      "input": {
+        "peopleList": [
+          {
+            "firstName": "Jane",
+            "lastName": "Doe",
+            "company": "stripe.com"
+          },
+          {
+            "firstName": "John",
+            "lastName": "Smith",
+            "company": "basecamp.com"
+          }
+        ],
+        "checkMx": true
+      },
+      "datasetView": "emails",
+      "inputSchemaFields": [
+        "peopleList",
+        "checkMx"
+      ]
+    },
+    {
+      "name": "deep-search-a-company-site-for-emails",
+      "title": "Read more pages of a company site",
+      "description": "Raise the page budget so the crawler reaches team and contact pages before guessing a pattern.",
+      "input": {
+        "people": [
+          "Melanie Perkins, canva.com"
+        ],
+        "maxPagesPerCompany": 10,
+        "candidatesPerPerson": 3
+      },
+      "datasetView": "emails",
+      "inputSchemaFields": [
+        "people",
+        "maxPagesPerCompany",
+        "candidatesPerPerson"
+      ]
+    }
+  ]
+}

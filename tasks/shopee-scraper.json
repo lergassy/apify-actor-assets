@@ -1,0 +1,92 @@
+{
+  "actor": "lergassy~shopee-scraper",
+  "tasks": [
+    {
+      "name": "shopee-products-in-vietnam",
+      "title": "Search Shopee products in Vietnam",
+      "description": "Vietnamese storefront with local prices, ratings and sold counts.",
+      "input": {
+        "mode": "search",
+        "country": "VN",
+        "searchTerms": [
+          "bluetooth speaker"
+        ],
+        "maxItems": 40
+      },
+      "datasetView": "products",
+      "inputSchemaFields": [
+        "mode",
+        "country",
+        "searchTerms",
+        "maxItems"
+      ]
+    },
+    {
+      "name": "shopee-products-in-a-price-range",
+      "title": "Shopee products inside a price range",
+      "description": "Minimum and maximum price applied at the source, so the list is already the right shelf.",
+      "input": {
+        "mode": "search",
+        "country": "ID",
+        "searchTerms": [
+          "smartwatch"
+        ],
+        "minPrice": 200000,
+        "maxPrice": 800000,
+        "maxItems": 40
+      },
+      "datasetView": "products",
+      "inputSchemaFields": [
+        "mode",
+        "country",
+        "searchTerms",
+        "minPrice",
+        "maxPrice"
+      ]
+    },
+    {
+      "name": "shopee-product-details",
+      "title": "Full details of Shopee products",
+      "description": "Enrich every search result with the product page: description, variants, stock and shop.",
+      "input": {
+        "mode": "search",
+        "country": "ID",
+        "searchTerms": [
+          "iphone 15"
+        ],
+        "enrichProducts": true,
+        "maxItems": 20
+      },
+      "datasetView": "details",
+      "inputSchemaFields": [
+        "mode",
+        "country",
+        "searchTerms",
+        "enrichProducts",
+        "maxItems"
+      ]
+    },
+    {
+      "name": "shopee-shop-catalogue",
+      "title": "Everything a Shopee shop sells",
+      "description": "Point it at a shop link and walk its catalogue instead of searching keywords.",
+      "input": {
+        "mode": "search",
+        "country": "ID",
+        "searchTerms": [
+          "nike shoes"
+        ],
+        "sortBy": "sales",
+        "maxItems": 40
+      },
+      "datasetView": "products",
+      "inputSchemaFields": [
+        "mode",
+        "country",
+        "searchTerms",
+        "sortBy",
+        "maxItems"
+      ]
+    }
+  ]
+}

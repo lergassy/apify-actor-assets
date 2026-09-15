@@ -1,0 +1,81 @@
+{
+  "actor": "lergassy~agoda-reviews-scraper",
+  "tasks": [
+    {
+      "name": "agoda-hotel-details",
+      "title": "Hotel details from an Agoda page",
+      "description": "Facilities, location, star rating and score breakdown for a property, without the reviews.",
+      "input": {
+        "startUrls": [
+          "https://www.agoda.com/the-magani-hotel-and-spa/hotel/bali-id.html"
+        ],
+        "mode": "hotel"
+      },
+      "datasetView": "hotels",
+      "inputSchemaFields": [
+        "startUrls",
+        "mode"
+      ]
+    },
+    {
+      "name": "english-reviews-only",
+      "title": "Only the English-language reviews",
+      "description": "Pick the review languages you can actually read instead of getting all eighteen.",
+      "input": {
+        "startUrls": [
+          "https://www.agoda.com/the-magani-hotel-and-spa/hotel/bali-id.html"
+        ],
+        "mode": "reviews",
+        "reviewLanguages": [
+          "en-us"
+        ],
+        "maxReviewsPerHotel": 200
+      },
+      "datasetView": "reviews",
+      "inputSchemaFields": [
+        "startUrls",
+        "mode",
+        "reviewLanguages",
+        "maxReviewsPerHotel"
+      ]
+    },
+    {
+      "name": "highest-rated-reviews-first",
+      "title": "Best reviews first",
+      "description": "Sorted by rating so you can lift the strongest quotes for a listing or a reply.",
+      "input": {
+        "startUrls": [
+          "https://www.agoda.com/the-magani-hotel-and-spa/hotel/bali-id.html"
+        ],
+        "mode": "reviews",
+        "reviewsSort": "ratingDesc",
+        "maxReviewsPerHotel": 150
+      },
+      "datasetView": "reviews",
+      "inputSchemaFields": [
+        "startUrls",
+        "mode",
+        "reviewsSort",
+        "maxReviewsPerHotel"
+      ]
+    },
+    {
+      "name": "hotel-details-and-reviews-together",
+      "title": "Hotel details and reviews in one run",
+      "description": "The property row and its reviews in a single dataset, ready for a report.",
+      "input": {
+        "startUrls": [
+          "https://www.agoda.com/the-magani-hotel-and-spa/hotel/bali-id.html"
+        ],
+        "mode": "both",
+        "maxReviewsPerHotel": 100
+      },
+      "datasetView": "reviews",
+      "inputSchemaFields": [
+        "startUrls",
+        "mode",
+        "maxReviewsPerHotel"
+      ]
+    }
+  ]
+}

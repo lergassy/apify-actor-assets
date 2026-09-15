@@ -1,0 +1,118 @@
+{
+  "actor": "lergassy~wta-tennis-scraper",
+  "tasks": [
+    {
+      "name": "wta-top-100-players",
+      "title": "WTA top 100 singles players",
+      "description": "The current singles ranking table with points, movement and country.",
+      "input": {
+        "mode": "rankings",
+        "rankingType": "singles",
+        "maxItems": 100
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "mode",
+        "rankingType",
+        "maxItems"
+      ]
+    },
+    {
+      "name": "wta-player-season-results",
+      "title": "A WTA player's results for one season",
+      "description": "Every match of a chosen year with opponent, round, score and tournament.",
+      "input": {
+        "mode": "player-matches",
+        "playerNames": [
+          "Iga Swiatek"
+        ],
+        "year": 2026,
+        "maxItems": 100
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "mode",
+        "playerNames",
+        "year",
+        "maxItems"
+      ]
+    },
+    {
+      "name": "wta-matches-in-a-date-range",
+      "title": "WTA matches played in a date range",
+      "description": "Narrow to a swing or a single tournament window instead of pulling a whole career.",
+      "input": {
+        "mode": "player-matches",
+        "playerNames": [
+          "Aryna Sabalenka"
+        ],
+        "dateFrom": "2026-01-01",
+        "dateTo": "2026-06-30",
+        "maxItems": 100
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "mode",
+        "playerNames",
+        "dateFrom",
+        "dateTo",
+        "maxItems"
+      ]
+    },
+    {
+      "name": "wta-player-profiles",
+      "title": "WTA player profiles",
+      "description": "Height, plays, birth date, country and current ranking for the players you name.",
+      "input": {
+        "mode": "players",
+        "playerNames": [
+          "Coco Gauff",
+          "Elena Rybakina"
+        ],
+        "maxItems": 50
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "mode",
+        "playerNames",
+        "maxItems"
+      ]
+    },
+    {
+      "name": "wta-tournament-calendar-for-a-season",
+      "title": "WTA tournament calendar for a season",
+      "description": "Every event of a season with dates, surface, category and location.",
+      "input": {
+        "mode": "tournaments",
+        "year": 2026,
+        "maxItems": 100
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "mode",
+        "year",
+        "maxItems"
+      ]
+    },
+    {
+      "name": "matches-of-several-wta-players",
+      "title": "Matches of several WTA players in one run",
+      "description": "Build a head-to-head sheet by pulling two or more players' matches into one dataset.",
+      "input": {
+        "mode": "player-matches",
+        "playerNames": [
+          "Iga Swiatek",
+          "Aryna Sabalenka",
+          "Coco Gauff"
+        ],
+        "maxItems": 150
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "mode",
+        "playerNames",
+        "maxItems"
+      ]
+    }
+  ]
+}

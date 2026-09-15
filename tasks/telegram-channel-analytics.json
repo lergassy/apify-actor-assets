@@ -1,0 +1,81 @@
+{
+  "actor": "lergassy~telegram-channel-analytics",
+  "tasks": [
+    {
+      "name": "telegram-channel-top-posts",
+      "title": "The top posts of a Telegram channel",
+      "description": "The best performing posts by views, with the text and the numbers behind them.",
+      "input": {
+        "channels": [
+          "@durov"
+        ],
+        "postsPerChannel": 100,
+        "topPosts": 10,
+        "includePosts": true
+      },
+      "datasetView": "posts",
+      "inputSchemaFields": [
+        "channels",
+        "postsPerChannel",
+        "topPosts",
+        "includePosts"
+      ]
+    },
+    {
+      "name": "telegram-posts-above-a-view-count",
+      "title": "Only posts above a view count",
+      "description": "A floor on views keeps the analysis to posts that actually reached people.",
+      "input": {
+        "channels": [
+          "@telegram"
+        ],
+        "postsPerChannel": 200,
+        "minViews": 100000,
+        "includePosts": true
+      },
+      "datasetView": "posts",
+      "inputSchemaFields": [
+        "channels",
+        "postsPerChannel",
+        "minViews",
+        "includePosts"
+      ]
+    },
+    {
+      "name": "audit-several-telegram-channels",
+      "title": "Audit a list of Telegram channels",
+      "description": "Subscribers, average views, engagement and posting rhythm for a whole list at once.",
+      "input": {
+        "channels": [
+          "@durov",
+          "@telegram",
+          "bloomberg"
+        ],
+        "postsPerChannel": 100
+      },
+      "datasetView": "channels",
+      "inputSchemaFields": [
+        "channels",
+        "postsPerChannel"
+      ]
+    },
+    {
+      "name": "telegram-channel-growth-snapshot",
+      "title": "Snapshot of a channel for a report",
+      "description": "One row per channel with the headline numbers an advertiser or a client asks for.",
+      "input": {
+        "channels": [
+          "bloomberg"
+        ],
+        "postsPerChannel": 150,
+        "topPosts": 5
+      },
+      "datasetView": "channels",
+      "inputSchemaFields": [
+        "channels",
+        "postsPerChannel",
+        "topPosts"
+      ]
+    }
+  ]
+}

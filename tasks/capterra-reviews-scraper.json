@@ -1,0 +1,136 @@
+{
+  "actor": "lergassy~capterra-reviews-scraper",
+  "tasks": [
+    {
+      "name": "five-star-software-reviews-only",
+      "title": "Only the five-star reviews of a product",
+      "description": "Filter to the top rating to see what buyers actually praise, in their own words.",
+      "input": {
+        "searchTerms": [
+          "Slack"
+        ],
+        "searchSites": [
+          "capterra"
+        ],
+        "maxReviews": 100,
+        "minRating": 5
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "searchTerms",
+        "searchSites",
+        "maxReviews",
+        "minRating"
+      ]
+    },
+    {
+      "name": "software-reviews-published-this-year",
+      "title": "Software reviews published this year",
+      "description": "A date filter keeps the sample current instead of mixing in reviews of an older product.",
+      "input": {
+        "searchTerms": [
+          "Notion"
+        ],
+        "searchSites": [
+          "capterra"
+        ],
+        "maxReviews": 100,
+        "publishedAfter": "2026-01-01"
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "searchTerms",
+        "searchSites",
+        "maxReviews",
+        "publishedAfter"
+      ]
+    },
+    {
+      "name": "compare-reviews-of-two-products",
+      "title": "Compare the reviews of two competing products",
+      "description": "Two product names in one run, so the ratings and complaints sit side by side in one dataset.",
+      "input": {
+        "searchTerms": [
+          "Asana",
+          "Monday.com"
+        ],
+        "searchSites": [
+          "capterra"
+        ],
+        "maxProductsPerTerm": 1,
+        "maxReviews": 80
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "searchTerms",
+        "searchSites",
+        "maxProductsPerTerm",
+        "maxReviews"
+      ]
+    },
+    {
+      "name": "reviews-sorted-by-rating",
+      "title": "Reviews sorted from best to worst",
+      "description": "The whole rating curve in order, useful when you want the extremes first.",
+      "input": {
+        "searchTerms": [
+          "HubSpot"
+        ],
+        "searchSites": [
+          "capterra"
+        ],
+        "maxReviews": 100,
+        "sortReviews": "rating_high"
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "searchTerms",
+        "searchSites",
+        "maxReviews",
+        "sortReviews"
+      ]
+    },
+    {
+      "name": "software-advice-product-reviews",
+      "title": "Scrape Software Advice reviews",
+      "description": "The same product read from Software Advice rather than Capterra, for a second opinion.",
+      "input": {
+        "searchTerms": [
+          "Zoom"
+        ],
+        "searchSites": [
+          "softwareadvice"
+        ],
+        "maxReviews": 100
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "searchTerms",
+        "searchSites",
+        "maxReviews"
+      ]
+    },
+    {
+      "name": "reviews-of-a-crm-product",
+      "title": "Reviews of a CRM product with a summary row",
+      "description": "Review rows plus one summary row carrying the product's overall rating and review count.",
+      "input": {
+        "searchTerms": [
+          "Salesforce"
+        ],
+        "searchSites": [
+          "capterra"
+        ],
+        "maxReviews": 100,
+        "includeProductRow": true
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "searchTerms",
+        "searchSites",
+        "maxReviews",
+        "includeProductRow"
+      ]
+    }
+  ]
+}

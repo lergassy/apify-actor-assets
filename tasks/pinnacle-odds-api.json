@@ -1,0 +1,94 @@
+{
+  "actor": "lergassy~pinnacle-odds-api",
+  "tasks": [
+    {
+      "name": "pinnacle-odds-in-decimal-format",
+      "title": "Pinnacle odds in decimal format",
+      "description": "The same sharp lines written as decimals for European books and spreadsheets.",
+      "input": {
+        "mode": "odds",
+        "leagues": [
+          "epl",
+          "nba"
+        ],
+        "daysAhead": 7,
+        "oddsFormat": "decimal"
+      },
+      "datasetView": "odds",
+      "inputSchemaFields": [
+        "mode",
+        "leagues",
+        "daysAhead",
+        "oddsFormat"
+      ]
+    },
+    {
+      "name": "pinnacle-totals-only",
+      "title": "Pinnacle totals only",
+      "description": "Over/under lines on their own, without moneylines and spreads cluttering the table.",
+      "input": {
+        "mode": "odds",
+        "leagues": [
+          "nfl",
+          "nba"
+        ],
+        "markets": [
+          "total"
+        ],
+        "daysAhead": 7
+      },
+      "datasetView": "odds",
+      "inputSchemaFields": [
+        "mode",
+        "leagues",
+        "markets",
+        "daysAhead"
+      ]
+    },
+    {
+      "name": "pinnacle-closing-lines",
+      "title": "Pinnacle lines including finished games",
+      "description": "Closing numbers for games already played — the benchmark every model is graded against.",
+      "input": {
+        "mode": "odds",
+        "leagues": [
+          "nba"
+        ],
+        "includeFinished": true,
+        "daysAhead": 3
+      },
+      "datasetView": "odds",
+      "inputSchemaFields": [
+        "mode",
+        "leagues",
+        "includeFinished",
+        "daysAhead"
+      ]
+    },
+    {
+      "name": "pinnacle-odds-for-a-date-range",
+      "title": "Pinnacle odds for a date range",
+      "description": "Set the window yourself instead of taking the default week.",
+      "input": {
+        "mode": "odds",
+        "leagues": [
+          "mlb"
+        ],
+        "dateFrom": "2026-09-20",
+        "dateTo": "2026-09-27",
+        "markets": [
+          "moneyline",
+          "total"
+        ]
+      },
+      "datasetView": "odds",
+      "inputSchemaFields": [
+        "mode",
+        "leagues",
+        "dateFrom",
+        "dateTo",
+        "markets"
+      ]
+    }
+  ]
+}

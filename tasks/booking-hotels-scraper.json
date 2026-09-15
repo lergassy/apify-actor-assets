@@ -1,0 +1,136 @@
+{
+  "actor": "lergassy~booking-hotels-scraper",
+  "tasks": [
+    {
+      "name": "hotel-reviews-from-booking-com",
+      "title": "Scrape guest reviews of a hotel on Booking.com",
+      "description": "Every review of a property with score, stay dates, guest type, country and the good and bad parts split apart.",
+      "input": {
+        "mode": "reviews",
+        "hotelUrls": [
+          "https://www.booking.com/hotel/id/the-magani-amp-spa.html"
+        ],
+        "maxReviewsPerHotel": 200,
+        "reviewsSortBy": "newest"
+      },
+      "datasetView": "reviews",
+      "inputSchemaFields": [
+        "mode",
+        "hotelUrls",
+        "maxReviewsPerHotel",
+        "reviewsSortBy"
+      ]
+    },
+    {
+      "name": "room-types-and-rates-for-a-hotel",
+      "title": "Room types and rates for one hotel",
+      "description": "All room options for your dates with price, board, cancellation policy and occupancy.",
+      "input": {
+        "mode": "hotel",
+        "hotelUrls": [
+          "https://www.booking.com/hotel/id/the-magani-amp-spa.html"
+        ],
+        "checkin": "2026-11-10",
+        "checkout": "2026-11-13",
+        "adults": 2,
+        "includeRooms": true
+      },
+      "datasetView": "rooms",
+      "inputSchemaFields": [
+        "mode",
+        "hotelUrls",
+        "checkin",
+        "checkout",
+        "adults"
+      ]
+    },
+    {
+      "name": "price-calendar-for-a-hotel",
+      "title": "Price calendar for a hotel for the next months",
+      "description": "Nightly prices day by day, so you can see the cheap weeks before you book.",
+      "input": {
+        "mode": "calendar",
+        "hotelUrls": [
+          "https://www.booking.com/hotel/id/the-magani-amp-spa.html"
+        ],
+        "calendarDays": 90,
+        "currency": "USD"
+      },
+      "datasetView": "calendar",
+      "inputSchemaFields": [
+        "mode",
+        "hotelUrls",
+        "calendarDays",
+        "currency"
+      ]
+    },
+    {
+      "name": "hotels-with-breakfast-included",
+      "title": "Hotels with breakfast included",
+      "description": "Search a destination and keep only the properties whose rate covers breakfast.",
+      "input": {
+        "mode": "search",
+        "destination": "Bangkok",
+        "checkin": "2026-11-10",
+        "checkout": "2026-11-13",
+        "breakfastIncluded": true,
+        "maxResults": 60
+      },
+      "datasetView": "properties",
+      "inputSchemaFields": [
+        "mode",
+        "destination",
+        "checkin",
+        "checkout",
+        "breakfastIncluded"
+      ]
+    },
+    {
+      "name": "best-rated-hotels-in-a-city",
+      "title": "Best rated hotels in a city",
+      "description": "Sorted by guest score with a minimum rating, so the list starts where the good places are.",
+      "input": {
+        "mode": "search",
+        "destination": "Lisbon",
+        "checkin": "2026-11-10",
+        "checkout": "2026-11-13",
+        "sortBy": "review_score",
+        "minReviewScore": 8.5,
+        "maxResults": 60
+      },
+      "datasetView": "properties",
+      "inputSchemaFields": [
+        "mode",
+        "destination",
+        "checkin",
+        "checkout",
+        "sortBy"
+      ]
+    },
+    {
+      "name": "family-rooms-for-two-adults-and-a-child",
+      "title": "Family rooms for two adults and a child",
+      "description": "Prices for the exact party you are travelling with, children's ages included in the search.",
+      "input": {
+        "mode": "search",
+        "destination": "Bali",
+        "checkin": "2026-12-20",
+        "checkout": "2026-12-27",
+        "adults": 2,
+        "childrenAges": [
+          7
+        ],
+        "rooms": 1,
+        "maxResults": 60
+      },
+      "datasetView": "properties",
+      "inputSchemaFields": [
+        "mode",
+        "destination",
+        "checkin",
+        "checkout",
+        "adults"
+      ]
+    }
+  ]
+}

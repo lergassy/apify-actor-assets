@@ -1,0 +1,59 @@
+{
+  "actor": "lergassy~polymarket-scraper",
+  "tasks": [
+    {
+      "name": "polymarket-markets-by-category",
+      "title": "Polymarket markets in one category",
+      "description": "Pick a tag and get just that corner of the board, sorted by real volume.",
+      "input": {
+        "mode": "markets",
+        "category": "sports",
+        "maxMarkets": 50,
+        "sortBy": "volume24h"
+      },
+      "datasetView": "markets",
+      "inputSchemaFields": [
+        "mode",
+        "category",
+        "maxMarkets",
+        "sortBy"
+      ]
+    },
+    {
+      "name": "polymarket-order-book",
+      "title": "Polymarket order book for a market",
+      "description": "Depth on both sides so you can see what a trade would actually cost.",
+      "input": {
+        "mode": "orderbook",
+        "query": "bitcoin",
+        "orderbookDepth": 10,
+        "maxMarkets": 10
+      },
+      "datasetView": "markets",
+      "inputSchemaFields": [
+        "mode",
+        "query",
+        "orderbookDepth",
+        "maxMarkets"
+      ]
+    },
+    {
+      "name": "polymarket-resolved-markets",
+      "title": "Polymarket markets that already resolved",
+      "description": "Settled markets and their final prices, for calibration and backtesting.",
+      "input": {
+        "mode": "markets",
+        "includeClosed": true,
+        "maxMarkets": 100,
+        "sortBy": "volume"
+      },
+      "datasetView": "markets",
+      "inputSchemaFields": [
+        "mode",
+        "includeClosed",
+        "maxMarkets",
+        "sortBy"
+      ]
+    }
+  ]
+}

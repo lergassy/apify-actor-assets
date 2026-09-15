@@ -1,0 +1,120 @@
+{
+  "actor": "lergassy~shopify-store-intel",
+  "tasks": [
+    {
+      "name": "shopify-stores-in-bulk",
+      "title": "Check many Shopify stores in one run",
+      "description": "A list of domains scanned together: theme, apps, contacts and store details in one dataset.",
+      "input": {
+        "storeUrls": [
+          "allbirds.com",
+          "gymshark.com",
+          "bombas.com"
+        ],
+        "mode": "store",
+        "includeContacts": true
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "storeUrls",
+        "mode",
+        "includeContacts"
+      ]
+    },
+    {
+      "name": "shopify-store-theme-and-apps",
+      "title": "See a store's theme and the apps it runs",
+      "description": "The tech behind a storefront — theme name, app fingerprints, payment and marketing tools.",
+      "input": {
+        "storeUrls": [
+          "gymshark.com"
+        ],
+        "mode": "store",
+        "includeContacts": false
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "storeUrls",
+        "mode",
+        "includeContacts"
+      ]
+    },
+    {
+      "name": "shopify-products-with-prices",
+      "title": "Scrape a Shopify store's products with prices",
+      "description": "The catalogue with variants, prices, images and availability, straight from the store's own feed.",
+      "input": {
+        "storeUrls": [
+          "allbirds.com"
+        ],
+        "mode": "products",
+        "maxProductsPerStore": 250
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "storeUrls",
+        "mode",
+        "maxProductsPerStore"
+      ]
+    },
+    {
+      "name": "shopify-store-with-products-and-contacts",
+      "title": "Store profile plus its product catalogue",
+      "description": "One run that returns the store row, its contacts and every product you asked for.",
+      "input": {
+        "storeUrls": [
+          "bombas.com"
+        ],
+        "mode": "store",
+        "includeProducts": true,
+        "includeContacts": true,
+        "maxProductsPerStore": 100
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "storeUrls",
+        "mode",
+        "includeProducts",
+        "includeContacts",
+        "maxProductsPerStore"
+      ]
+    },
+    {
+      "name": "check-if-a-site-runs-shopify",
+      "title": "Check whether a website runs on Shopify",
+      "description": "A quick yes or no for a list of domains, with the evidence that proves it.",
+      "input": {
+        "storeUrls": [
+          "allbirds.com",
+          "apple.com",
+          "gymshark.com"
+        ],
+        "mode": "detect"
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "storeUrls",
+        "mode"
+      ]
+    },
+    {
+      "name": "shopify-competitor-price-list",
+      "title": "Build a competitor price list",
+      "description": "Pull several competing stores' catalogues into one table and compare prices line by line.",
+      "input": {
+        "storeUrls": [
+          "allbirds.com",
+          "bombas.com"
+        ],
+        "mode": "products",
+        "maxProductsPerStore": 150
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "storeUrls",
+        "mode",
+        "maxProductsPerStore"
+      ]
+    }
+  ]
+}

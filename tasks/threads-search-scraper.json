@@ -1,0 +1,201 @@
+{
+  "actor": "lergassy~threads-search-scraper",
+  "tasks": [
+    {
+      "name": "threads-hashtag-posts",
+      "title": "Scrape Threads posts for a hashtag",
+      "description": "All posts carrying a hashtag, with text, media, links and engagement counts.",
+      "input": {
+        "mode": "search",
+        "keywords": [
+          "#ai"
+        ],
+        "maxPosts": 100,
+        "searchTypes": [
+          "tags"
+        ]
+      },
+      "datasetView": "posts",
+      "inputSchemaFields": [
+        "mode",
+        "keywords",
+        "maxPosts",
+        "searchTypes"
+      ]
+    },
+    {
+      "name": "threads-recent-posts-for-a-keyword",
+      "title": "Newest Threads posts for a keyword",
+      "description": "The recent tab only, so you see what is being said right now rather than the all-time hits.",
+      "input": {
+        "mode": "search",
+        "keywords": [
+          "bali"
+        ],
+        "maxPosts": 100,
+        "searchTypes": [
+          "recent"
+        ]
+      },
+      "datasetView": "posts",
+      "inputSchemaFields": [
+        "mode",
+        "keywords",
+        "maxPosts",
+        "searchTypes"
+      ]
+    },
+    {
+      "name": "threads-top-posts-for-a-keyword",
+      "title": "Top Threads posts for a keyword",
+      "description": "The posts Threads ranks highest for your term — the ones already getting engagement.",
+      "input": {
+        "mode": "search",
+        "keywords": [
+          "marketing"
+        ],
+        "maxPosts": 100,
+        "searchTypes": [
+          "top"
+        ]
+      },
+      "datasetView": "posts",
+      "inputSchemaFields": [
+        "mode",
+        "keywords",
+        "maxPosts",
+        "searchTypes"
+      ]
+    },
+    {
+      "name": "track-brand-mentions-on-threads",
+      "title": "Track brand mentions on Threads",
+      "description": "Every post mentioning your brand name since a chosen date. Schedule it and it becomes monitoring.",
+      "input": {
+        "mode": "search",
+        "keywords": [
+          "apify"
+        ],
+        "maxPosts": 100,
+        "postedAfter": "2026-09-01",
+        "includeProfile": true
+      },
+      "datasetView": "posts",
+      "inputSchemaFields": [
+        "mode",
+        "keywords",
+        "maxPosts",
+        "postedAfter",
+        "includeProfile"
+      ]
+    },
+    {
+      "name": "threads-posts-for-several-keywords",
+      "title": "Search several keywords in one run",
+      "description": "A list of terms searched together, results merged into one dataset with the keyword that found each post.",
+      "input": {
+        "mode": "search",
+        "keywords": [
+          "crypto",
+          "bitcoin",
+          "ethereum"
+        ],
+        "maxPosts": 50,
+        "searchTypes": [
+          "top",
+          "recent"
+        ]
+      },
+      "datasetView": "posts",
+      "inputSchemaFields": [
+        "mode",
+        "keywords",
+        "maxPosts",
+        "searchTypes"
+      ]
+    },
+    {
+      "name": "find-threads-accounts-by-keyword",
+      "title": "Find Threads accounts by keyword",
+      "description": "Account search instead of post search: who on Threads describes themselves with your term.",
+      "input": {
+        "mode": "users",
+        "keywords": [
+          "photographer"
+        ],
+        "maxUsersPerKeyword": 50
+      },
+      "datasetView": "profiles",
+      "inputSchemaFields": [
+        "mode",
+        "keywords",
+        "maxUsersPerKeyword"
+      ]
+    },
+    {
+      "name": "find-influencers-on-threads-with-contacts",
+      "title": "Find influencers on Threads with their contacts",
+      "description": "Accounts matching a niche keyword, returned with followers, bio, link and any email in it.",
+      "input": {
+        "mode": "users",
+        "keywords": [
+          "fitness coach"
+        ],
+        "maxUsersPerKeyword": 30,
+        "includeProfile": true
+      },
+      "datasetView": "profiles",
+      "inputSchemaFields": [
+        "mode",
+        "keywords",
+        "maxUsersPerKeyword",
+        "includeProfile"
+      ]
+    },
+    {
+      "name": "threads-search-results-with-media",
+      "title": "Threads search results with images and video",
+      "description": "Only the matching posts that carry media, with direct image and video URLs.",
+      "input": {
+        "mode": "search",
+        "keywords": [
+          "travel"
+        ],
+        "maxPosts": 100,
+        "searchTypes": [
+          "top"
+        ]
+      },
+      "datasetView": "media",
+      "inputSchemaFields": [
+        "mode",
+        "keywords",
+        "maxPosts",
+        "searchTypes"
+      ]
+    },
+    {
+      "name": "threads-keyword-search-filtered-by-a-second-word",
+      "title": "Narrow a Threads search with a second word",
+      "description": "Search one term, then keep only posts that also contain your filter words — cuts the noise hard.",
+      "input": {
+        "mode": "search",
+        "keywords": [
+          "visa"
+        ],
+        "maxPosts": 200,
+        "filterKeywords": [
+          "indonesia",
+          "bali"
+        ]
+      },
+      "datasetView": "posts",
+      "inputSchemaFields": [
+        "mode",
+        "keywords",
+        "maxPosts",
+        "filterKeywords"
+      ]
+    }
+  ]
+}

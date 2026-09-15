@@ -1,0 +1,43 @@
+{
+  "actor": "lergassy~trustpilot-reviews-api",
+  "tasks": [
+    {
+      "name": "five-star-trustpilot-reviews",
+      "title": "Only five-star Trustpilot reviews",
+      "description": "The praise on its own, ready to quote on a landing page.",
+      "input": {
+        "companies": [
+          "slack.com"
+        ],
+        "maxReviews": 200,
+        "stars": [
+          "5"
+        ]
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "companies",
+        "maxReviews",
+        "stars"
+      ]
+    },
+    {
+      "name": "trustpilot-reviews-of-several-companies",
+      "title": "Trustpilot reviews of several companies",
+      "description": "Compare your score and complaints with your competitors' in one dataset.",
+      "input": {
+        "companies": [
+          "slack.com",
+          "fiverr.com",
+          "upwork.com"
+        ],
+        "maxReviews": 100
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "companies",
+        "maxReviews"
+      ]
+    }
+  ]
+}

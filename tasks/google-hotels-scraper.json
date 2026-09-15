@@ -1,0 +1,115 @@
+{
+  "actor": "lergassy~google-hotels-scraper",
+  "tasks": [
+    {
+      "name": "hotels-with-a-pool-in-bali",
+      "title": "Hotels with a pool for your dates",
+      "description": "Google Hotels results filtered to properties with a pool, with nightly price and rating.",
+      "input": {
+        "locations": [
+          "Seminyak, Bali"
+        ],
+        "checkIn": "2026-11-10",
+        "checkOut": "2026-11-13",
+        "poolOnly": true,
+        "maxHotelsPerLocation": 40
+      },
+      "datasetView": "hotels",
+      "inputSchemaFields": [
+        "locations",
+        "checkIn",
+        "checkOut",
+        "poolOnly",
+        "maxHotelsPerLocation"
+      ]
+    },
+    {
+      "name": "cheapest-hotels-in-a-city",
+      "title": "Cheapest hotels in a city first",
+      "description": "Sorted by lowest price so the budget end of the market is at the top of the sheet.",
+      "input": {
+        "locations": [
+          "Bangkok"
+        ],
+        "checkIn": "2026-11-10",
+        "checkOut": "2026-11-13",
+        "sortBy": "lowest_price",
+        "maxHotelsPerLocation": 40
+      },
+      "datasetView": "hotels",
+      "inputSchemaFields": [
+        "locations",
+        "checkIn",
+        "checkOut",
+        "sortBy",
+        "maxHotelsPerLocation"
+      ]
+    },
+    {
+      "name": "most-reviewed-hotels",
+      "title": "The most reviewed hotels in a place",
+      "description": "Sort by review count to find the properties with a track record, not just a high score.",
+      "input": {
+        "locations": [
+          "Lisbon"
+        ],
+        "checkIn": "2026-11-10",
+        "checkOut": "2026-11-13",
+        "sortBy": "most_reviewed",
+        "maxHotelsPerLocation": 40
+      },
+      "datasetView": "hotels",
+      "inputSchemaFields": [
+        "locations",
+        "checkIn",
+        "checkOut",
+        "sortBy",
+        "maxHotelsPerLocation"
+      ]
+    },
+    {
+      "name": "hotel-prices-across-several-cities",
+      "title": "Hotel prices across several cities",
+      "description": "One run, several destinations — the comparison you need before choosing where to go.",
+      "input": {
+        "locations": [
+          "Bali",
+          "Bangkok",
+          "Kuala Lumpur"
+        ],
+        "checkIn": "2026-12-01",
+        "checkOut": "2026-12-05",
+        "maxHotelsPerLocation": 25
+      },
+      "datasetView": "hotels",
+      "inputSchemaFields": [
+        "locations",
+        "checkIn",
+        "checkOut",
+        "maxHotelsPerLocation"
+      ]
+    },
+    {
+      "name": "hotel-prices-by-booking-site",
+      "title": "Which site sells a hotel cheapest",
+      "description": "Per-site offers read from each hotel's page: Booking, Agoda, Expedia and the hotel itself.",
+      "input": {
+        "locations": [
+          "Ubud, Bali"
+        ],
+        "checkIn": "2026-11-10",
+        "checkOut": "2026-11-13",
+        "includeOffers": true,
+        "maxOfferLookups": 20
+      },
+      "datasetView": "offers",
+      "inputSchemaFields": [
+        "locations",
+        "checkIn",
+        "checkOut",
+        "includeOffers",
+        "maxOfferLookups"
+      ]
+    }
+  ]
+}

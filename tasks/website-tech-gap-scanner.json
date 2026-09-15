@@ -1,0 +1,141 @@
+{
+  "actor": "lergassy~website-tech-gap-scanner",
+  "tasks": [
+    {
+      "name": "websites-without-live-chat",
+      "title": "Find websites with no live chat",
+      "description": "Scan a list of domains and keep only the ones missing a chat widget — a ready list for chat vendors.",
+      "input": {
+        "domains": [
+          "allbirds.com",
+          "roofingbybruce.com",
+          "bostondentalgroup.com"
+        ],
+        "onlyWithGaps": [
+          "no_live_chat"
+        ]
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "domains",
+        "onlyWithGaps"
+      ]
+    },
+    {
+      "name": "websites-without-a-crm",
+      "title": "Find businesses running without a CRM",
+      "description": "No marketing automation and no CRM tag on the site: the classic opening line for a sales email.",
+      "input": {
+        "domains": [
+          "roofingbybruce.com",
+          "bostondentalgroup.com"
+        ],
+        "onlyWithGaps": [
+          "no_crm"
+        ]
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "domains",
+        "onlyWithGaps"
+      ]
+    },
+    {
+      "name": "websites-without-analytics",
+      "title": "Find websites with no analytics installed",
+      "description": "Sites flying blind — no Google Analytics, no alternative — with the rest of their stack listed.",
+      "input": {
+        "domains": [
+          "roofingbybruce.com",
+          "bostondentalgroup.com"
+        ],
+        "onlyWithGaps": [
+          "no_analytics"
+        ]
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "domains",
+        "onlyWithGaps"
+      ]
+    },
+    {
+      "name": "websites-without-online-payments",
+      "title": "Find websites that cannot take payments online",
+      "description": "No checkout, no payment processor: prospects for payment and e-commerce products.",
+      "input": {
+        "domains": [
+          "roofingbybruce.com",
+          "bostondentalgroup.com"
+        ],
+        "onlyWithGaps": [
+          "no_online_payments"
+        ]
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "domains",
+        "onlyWithGaps"
+      ]
+    },
+    {
+      "name": "websites-that-are-not-mobile-ready",
+      "title": "Find websites that are not mobile ready",
+      "description": "Missing viewport and responsive basics, plus the SEO gaps that usually come with it.",
+      "input": {
+        "domains": [
+          "roofingbybruce.com",
+          "bostondentalgroup.com"
+        ],
+        "onlyWithGaps": [
+          "not_mobile_ready",
+          "no_meta_description"
+        ]
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "domains",
+        "onlyWithGaps"
+      ]
+    },
+    {
+      "name": "high-score-prospects-only",
+      "title": "Only the highest-scoring prospects",
+      "description": "Set a minimum prospect score and the scan returns just the websites worth a call.",
+      "input": {
+        "domains": [
+          "allbirds.com",
+          "roofingbybruce.com",
+          "bostondentalgroup.com"
+        ],
+        "minProspectScore": 60
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "domains",
+        "minProspectScore"
+      ]
+    },
+    {
+      "name": "advertisers-with-missing-tools",
+      "title": "Companies buying ads but missing key tools",
+      "description": "They spend on traffic yet have no email capture and no chat — money in, leaks everywhere.",
+      "input": {
+        "domains": [
+          "allbirds.com",
+          "roofingbybruce.com"
+        ],
+        "onlyPaidTraffic": true,
+        "onlyWithGaps": [
+          "no_email_capture"
+        ]
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "domains",
+        "onlyPaidTraffic",
+        "onlyWithGaps"
+      ]
+    }
+  ]
+}

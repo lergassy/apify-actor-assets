@@ -1,0 +1,77 @@
+{
+  "actor": "lergassy~threads-profile-scraper",
+  "tasks": [
+    {
+      "name": "threads-follower-count-of-an-account",
+      "title": "Get the follower count of a Threads account",
+      "description": "Followers, bio, verification badge and profile picture for one or more Threads accounts, without logging in.",
+      "input": { "mode": "profile", "usernames": ["zuck"], "includeProfileDetails": true, "maxItems": 10 },
+      "inputSchemaFields": ["mode", "usernames", "includeProfileDetails", "maxItems"],
+      "datasetView": "profiles"
+    },
+    {
+      "name": "threads-bio-links-and-contact-details",
+      "title": "Extract bio links, emails and phones from Threads profiles",
+      "description": "Pull the external link, email addresses and phone numbers that accounts put in their Threads bio — a contact list for outreach.",
+      "input": { "mode": "profile", "usernames": ["natgeo", "nasa", "vogue"], "includeProfileDetails": true, "maxItems": 50 },
+      "inputSchemaFields": ["mode", "usernames", "includeProfileDetails", "maxItems"],
+      "datasetView": "profiles"
+    },
+    {
+      "name": "threads-profiles-in-bulk",
+      "title": "Scrape many Threads profiles in one run",
+      "description": "Feed a list of usernames and get one row per account with followers, bio, links and verification, ready for a spreadsheet.",
+      "input": { "mode": "profile", "usernames": ["zuck", "natgeo", "nasa", "nike", "mkbhd", "vogue", "espn", "netflix"], "includeProfileDetails": true, "maxItems": 100 },
+      "inputSchemaFields": ["mode", "usernames", "includeProfileDetails", "maxItems"],
+      "datasetView": "profiles"
+    },
+    {
+      "name": "threads-latest-posts-from-an-account",
+      "title": "Get the latest posts from a Threads account",
+      "description": "The most recent posts of an account with text, media, links, likes, replies and reposts.",
+      "input": { "mode": "posts", "usernames": ["mkbhd"], "maxPosts": 50, "includeProfile": false },
+      "inputSchemaFields": ["mode", "usernames", "maxPosts", "includeProfile"],
+      "datasetView": "posts"
+    },
+    {
+      "name": "threads-posts-with-engagement-metrics",
+      "title": "Threads posts with likes, replies and reposts",
+      "description": "Every post returned with its engagement counts, so you can rank an account's content by what actually worked.",
+      "input": { "mode": "posts", "usernames": ["nike"], "maxPosts": 100, "includeProfile": true },
+      "inputSchemaFields": ["mode", "usernames", "maxPosts", "includeProfile"],
+      "datasetView": "posts"
+    },
+    {
+      "name": "monitor-competitor-accounts-on-threads",
+      "title": "Monitor competitor accounts on Threads",
+      "description": "Posts from a set of competitor accounts published after a chosen date — schedule it daily and you get only what is new.",
+      "input": { "mode": "posts", "usernames": ["nike", "adidas", "underarmour"], "maxPosts": 30, "postedAfter": "2026-09-01", "includeProfile": true },
+      "inputSchemaFields": ["mode", "usernames", "maxPosts", "postedAfter", "includeProfile"],
+      "datasetView": "posts"
+    },
+    {
+      "name": "threads-posts-containing-a-keyword",
+      "title": "Find posts about a topic inside an account's feed",
+      "description": "Scrape an account's posts and keep only the ones that mention your keywords — product launches, a campaign name, a city.",
+      "input": { "mode": "posts", "usernames": ["natgeo"], "maxPosts": 200, "filterKeywords": ["ocean", "climate"] },
+      "inputSchemaFields": ["mode", "usernames", "maxPosts", "filterKeywords"],
+      "datasetView": "posts"
+    },
+    {
+      "name": "threads-profile-from-a-url",
+      "title": "Scrape a Threads profile from its URL",
+      "description": "Paste a threads.net profile link instead of a username and get the full account row back.",
+      "input": { "mode": "profile", "startUrls": [{ "url": "https://www.threads.net/@zuck" }], "includeProfileDetails": true, "maxItems": 10 },
+      "inputSchemaFields": ["mode", "startUrls", "includeProfileDetails", "maxItems"],
+      "datasetView": "profiles"
+    },
+    {
+      "name": "threads-images-and-videos-from-an-account",
+      "title": "Download image and video links from a Threads account",
+      "description": "Only the posts that carry media, with direct image and video URLs — useful for content archives and moodboards.",
+      "input": { "mode": "posts", "usernames": ["natgeo"], "maxPosts": 100, "includeProfile": false },
+      "inputSchemaFields": ["mode", "usernames", "maxPosts", "includeProfile"],
+      "datasetView": "media"
+    }
+  ]
+}

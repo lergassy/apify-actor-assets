@@ -1,0 +1,99 @@
+{
+  "actor": "lergassy~youtube-comments-scraper",
+  "tasks": [
+    {
+      "name": "comments-of-a-playlist",
+      "title": "Comments across a whole playlist",
+      "description": "Every video in a playlist read in one run, comments merged into a single dataset.",
+      "input": {
+        "playlistUrls": [
+          "https://www.youtube.com/playlist?list=PLOU2XLYxmsIKpaV8h0AGE05so0fAwwfTw"
+        ],
+        "maxVideosPerSource": 10,
+        "maxCommentsPerVideo": 100
+      },
+      "datasetView": "comments",
+      "inputSchemaFields": [
+        "playlistUrls",
+        "maxVideosPerSource",
+        "maxCommentsPerVideo"
+      ]
+    },
+    {
+      "name": "top-comments-with-many-likes",
+      "title": "Only the comments with real traction",
+      "description": "Set a minimum like count and the one-word replies disappear from the table.",
+      "input": {
+        "videoUrls": [
+          "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+        ],
+        "maxCommentsPerVideo": 200,
+        "minLikes": 50,
+        "sort": "top"
+      },
+      "datasetView": "comments",
+      "inputSchemaFields": [
+        "videoUrls",
+        "maxCommentsPerVideo",
+        "minLikes",
+        "sort"
+      ]
+    },
+    {
+      "name": "comments-without-replies",
+      "title": "Top-level comments only",
+      "description": "Turn replies off when you want one row per opinion rather than whole threads.",
+      "input": {
+        "videoUrls": [
+          "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+        ],
+        "maxCommentsPerVideo": 200,
+        "includeReplies": false
+      },
+      "datasetView": "comments",
+      "inputSchemaFields": [
+        "videoUrls",
+        "maxCommentsPerVideo",
+        "includeReplies"
+      ]
+    },
+    {
+      "name": "comments-since-a-date",
+      "title": "Only comments left since a date",
+      "description": "A date cut-off turns this into monitoring: run it daily and get only what is new.",
+      "input": {
+        "videoUrls": [
+          "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+        ],
+        "maxCommentsPerVideo": 200,
+        "commentsSince": "2026-08-01",
+        "sort": "newest"
+      },
+      "datasetView": "comments",
+      "inputSchemaFields": [
+        "videoUrls",
+        "maxCommentsPerVideo",
+        "commentsSince",
+        "sort"
+      ]
+    },
+    {
+      "name": "comments-with-video-details",
+      "title": "Comments plus a summary row for each video",
+      "description": "Title, views and channel alongside the comments, so the sheet stands on its own.",
+      "input": {
+        "videoUrls": [
+          "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+        ],
+        "maxCommentsPerVideo": 100,
+        "includeVideoDetails": true
+      },
+      "datasetView": "videos",
+      "inputSchemaFields": [
+        "videoUrls",
+        "maxCommentsPerVideo",
+        "includeVideoDetails"
+      ]
+    }
+  ]
+}

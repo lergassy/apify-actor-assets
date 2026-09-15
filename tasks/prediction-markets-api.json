@@ -1,0 +1,74 @@
+{
+  "actor": "lergassy~prediction-markets-api",
+  "tasks": [
+    {
+      "name": "compare-kalshi-and-polymarket-odds",
+      "title": "Compare Kalshi and Polymarket odds on the same question",
+      "description": "Both venues in one dataset, so the same question sits side by side and the gap is visible.",
+      "input": {
+        "platforms": [
+          "kalshi",
+          "polymarket"
+        ],
+        "mode": "markets",
+        "query": "fed",
+        "maxMarkets": 50,
+        "sortBy": "volume24h"
+      },
+      "datasetView": "markets",
+      "inputSchemaFields": [
+        "platforms",
+        "mode",
+        "query",
+        "maxMarkets",
+        "sortBy"
+      ]
+    },
+    {
+      "name": "prediction-market-order-books",
+      "title": "Order book depth across prediction markets",
+      "description": "Bids and asks level by level on both venues, before you size anything.",
+      "input": {
+        "platforms": [
+          "kalshi",
+          "polymarket"
+        ],
+        "mode": "orderbook",
+        "query": "election",
+        "orderbookDepth": 10,
+        "maxMarkets": 10
+      },
+      "datasetView": "markets",
+      "inputSchemaFields": [
+        "platforms",
+        "mode",
+        "query",
+        "orderbookDepth",
+        "maxMarkets"
+      ]
+    },
+    {
+      "name": "resolved-prediction-markets",
+      "title": "Resolved prediction markets and their final prices",
+      "description": "Settled contracts from both venues — the dataset you calibrate a forecasting model against.",
+      "input": {
+        "platforms": [
+          "kalshi",
+          "polymarket"
+        ],
+        "mode": "markets",
+        "includeClosed": true,
+        "maxMarkets": 100,
+        "sortBy": "volume"
+      },
+      "datasetView": "markets",
+      "inputSchemaFields": [
+        "platforms",
+        "mode",
+        "includeClosed",
+        "maxMarkets",
+        "sortBy"
+      ]
+    }
+  ]
+}

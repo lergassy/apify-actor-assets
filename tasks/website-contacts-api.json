@@ -1,0 +1,84 @@
+{
+  "actor": "lergassy~website-contacts-api",
+  "tasks": [
+    {
+      "name": "contacts-from-a-list-of-domains",
+      "title": "Contacts from a plain list of domains",
+      "description": "Paste domains one per line and get emails, phones and social links for each.",
+      "input": {
+        "domains": [
+          "apify.com",
+          "basecamp.com",
+          "stripe.com"
+        ],
+        "maxPagesPerSite": 6
+      },
+      "datasetView": "contacts",
+      "inputSchemaFields": [
+        "domains",
+        "maxPagesPerSite"
+      ]
+    },
+    {
+      "name": "deep-crawl-for-contact-details",
+      "title": "Read more pages per website",
+      "description": "Raise the page budget so team, about and contact pages are all visited before giving up.",
+      "input": {
+        "startUrls": [
+          {
+            "url": "https://www.apify.com"
+          }
+        ],
+        "maxPagesPerSite": 15,
+        "stopEarly": false
+      },
+      "datasetView": "contacts",
+      "inputSchemaFields": [
+        "startUrls",
+        "maxPagesPerSite",
+        "stopEarly"
+      ]
+    },
+    {
+      "name": "phone-numbers-with-a-country-default",
+      "title": "Phone numbers normalised to a country",
+      "description": "Local numbers without a country code get one, so the list is dialable as it stands.",
+      "input": {
+        "domains": [
+          "basecamp.com",
+          "stripe.com"
+        ],
+        "defaultCountry": "US",
+        "maxPagesPerSite": 6
+      },
+      "datasetView": "contacts",
+      "inputSchemaFields": [
+        "domains",
+        "defaultCountry",
+        "maxPagesPerSite"
+      ]
+    },
+    {
+      "name": "contacts-for-a-big-domain-list",
+      "title": "Contacts for a large domain list",
+      "description": "Hundreds of websites crawled in parallel, one row per site, built for lead-list work.",
+      "input": {
+        "domains": [
+          "apify.com",
+          "basecamp.com",
+          "stripe.com",
+          "canva.com",
+          "notion.so"
+        ],
+        "maxWebsites": 1000,
+        "concurrency": 10
+      },
+      "datasetView": "contacts",
+      "inputSchemaFields": [
+        "domains",
+        "maxWebsites",
+        "concurrency"
+      ]
+    }
+  ]
+}

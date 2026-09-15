@@ -1,0 +1,116 @@
+{
+  "actor": "lergassy~kalshi-weather-scraper",
+  "tasks": [
+    {
+      "name": "kalshi-rain-and-snow-markets",
+      "title": "Kalshi rain and snow markets",
+      "description": "Precipitation contracts for the days ahead with the forecast next to the market price.",
+      "input": {
+        "mode": "markets",
+        "metrics": [
+          "rain",
+          "snow"
+        ],
+        "days": 3,
+        "withForecast": true
+      },
+      "datasetView": "markets",
+      "inputSchemaFields": [
+        "mode",
+        "metrics",
+        "days",
+        "withForecast"
+      ]
+    },
+    {
+      "name": "weather-odds-for-several-cities",
+      "title": "Weather odds for several cities at once",
+      "description": "A city list in one run, so you can compare where the market disagrees with the forecast most.",
+      "input": {
+        "mode": "markets",
+        "cities": [
+          "New York",
+          "Chicago",
+          "Miami"
+        ],
+        "metrics": [
+          "high",
+          "low"
+        ],
+        "days": 3,
+        "withForecast": true
+      },
+      "datasetView": "markets",
+      "inputSchemaFields": [
+        "mode",
+        "cities",
+        "metrics",
+        "days",
+        "withForecast"
+      ]
+    },
+    {
+      "name": "kalshi-weather-events-this-week",
+      "title": "Kalshi weather events this week",
+      "description": "Event-level view of the weather markets for the coming days.",
+      "input": {
+        "mode": "events",
+        "days": 7,
+        "metrics": [
+          "high",
+          "low"
+        ]
+      },
+      "datasetView": "events",
+      "inputSchemaFields": [
+        "mode",
+        "days",
+        "metrics"
+      ]
+    },
+    {
+      "name": "liquid-weather-markets-only",
+      "title": "Only weather markets with real volume",
+      "description": "Set a minimum volume and the dead contracts drop out of the table.",
+      "input": {
+        "mode": "markets",
+        "metrics": [
+          "high",
+          "low"
+        ],
+        "days": 3,
+        "minVolume": 1000
+      },
+      "datasetView": "markets",
+      "inputSchemaFields": [
+        "mode",
+        "metrics",
+        "days",
+        "minVolume"
+      ]
+    },
+    {
+      "name": "settled-weather-markets",
+      "title": "Settled weather markets and their outcomes",
+      "description": "Yesterday's contracts with how they resolved — the history you need to score a forecast.",
+      "input": {
+        "mode": "markets",
+        "metrics": [
+          "high",
+          "low"
+        ],
+        "days": 3,
+        "includeSettled": true,
+        "maxRows": 500
+      },
+      "datasetView": "markets",
+      "inputSchemaFields": [
+        "mode",
+        "metrics",
+        "days",
+        "includeSettled",
+        "maxRows"
+      ]
+    }
+  ]
+}

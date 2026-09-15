@@ -1,0 +1,116 @@
+{
+  "actor": "lergassy~ocr-text-extractor",
+  "tasks": [
+    {
+      "name": "ocr-a-photo-of-a-document",
+      "title": "OCR a photo of a document",
+      "description": "Point it at a photo or screenshot and get the text out, with per-page rows.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/document-text-extractor/sample-scan.png"
+        ],
+        "language": "eng",
+        "includePages": true
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "language",
+        "includePages"
+      ]
+    },
+    {
+      "name": "ocr-with-high-confidence-words-only",
+      "title": "OCR keeping only confident words",
+      "description": "Set a minimum confidence and the shaky guesses from blurry scans are dropped.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/document-text-extractor/sample-scan.pdf"
+        ],
+        "language": "eng",
+        "includeWordBoxes": true,
+        "minWordConfidence": 70
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "language",
+        "includeWordBoxes",
+        "minWordConfidence"
+      ]
+    },
+    {
+      "name": "ocr-only-selected-pages",
+      "title": "OCR only selected pages of a scan",
+      "description": "A page range keeps a 200-page scan from turning into a 200-page bill.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/document-text-extractor/sample-scan.pdf"
+        ],
+        "pageRange": "1-3",
+        "language": "eng"
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "pageRange",
+        "language"
+      ]
+    },
+    {
+      "name": "ocr-several-files-at-once",
+      "title": "OCR several files in one run",
+      "description": "Images and scanned PDFs mixed in one batch, processed three at a time.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/document-text-extractor/sample-scan.pdf",
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/document-text-extractor/sample-scan.png"
+        ],
+        "language": "eng",
+        "maxConcurrency": 3
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "language",
+        "maxConcurrency"
+      ]
+    },
+    {
+      "name": "ocr-a-document-in-german",
+      "title": "OCR a document in another language",
+      "description": "Pick the OCR language so accents and umlauts come out right.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/document-text-extractor/sample-scan.pdf"
+        ],
+        "language": "deu",
+        "includePages": true
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "language",
+        "includePages"
+      ]
+    },
+    {
+      "name": "ocr-with-word-coordinates",
+      "title": "OCR with word coordinates for highlighting",
+      "description": "Every word with its box and confidence — what you need to highlight a match on the original image.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/document-text-extractor/sample-scan.png"
+        ],
+        "language": "eng",
+        "includeWordBoxes": true
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "language",
+        "includeWordBoxes"
+      ]
+    }
+  ]
+}

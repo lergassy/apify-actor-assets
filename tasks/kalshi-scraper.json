@@ -1,0 +1,59 @@
+{
+  "actor": "lergassy~kalshi-scraper",
+  "tasks": [
+    {
+      "name": "kalshi-markets-by-category",
+      "title": "Kalshi markets in one category",
+      "description": "Narrow to a tag — economics, politics, climate — instead of scanning the whole board.",
+      "input": {
+        "mode": "markets",
+        "category": "economics",
+        "maxMarkets": 50,
+        "sortBy": "volume24h"
+      },
+      "datasetView": "markets",
+      "inputSchemaFields": [
+        "mode",
+        "category",
+        "maxMarkets",
+        "sortBy"
+      ]
+    },
+    {
+      "name": "kalshi-order-book-depth",
+      "title": "Kalshi order book for a market",
+      "description": "Bids and asks level by level, the view you need before sizing a position.",
+      "input": {
+        "mode": "orderbook",
+        "query": "fed",
+        "orderbookDepth": 10,
+        "maxMarkets": 10
+      },
+      "datasetView": "markets",
+      "inputSchemaFields": [
+        "mode",
+        "query",
+        "orderbookDepth",
+        "maxMarkets"
+      ]
+    },
+    {
+      "name": "kalshi-resolved-markets",
+      "title": "Kalshi markets that already settled",
+      "description": "Closed contracts with their final prices — a backtest set for your model.",
+      "input": {
+        "mode": "markets",
+        "includeClosed": true,
+        "maxMarkets": 100,
+        "sortBy": "volume"
+      },
+      "datasetView": "markets",
+      "inputSchemaFields": [
+        "mode",
+        "includeClosed",
+        "maxMarkets",
+        "sortBy"
+      ]
+    }
+  ]
+}

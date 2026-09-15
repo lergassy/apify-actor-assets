@@ -1,0 +1,223 @@
+{
+  "actor": "lergassy~srt-subtitle-generator",
+  "tasks": [
+    {
+      "name": "srt-subtitles-from-an-audio-file",
+      "title": "Generate SRT subtitles from an audio file",
+      "description": "A ready .srt file with numbered cues and timings, made from the spoken audio.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/sample-5min.m4a"
+        ],
+        "quality": "accurate",
+        "subtitleFormat": "srt",
+        "includeSegments": true
+      },
+      "options": {
+        "memoryMbytes": 2048,
+        "timeoutSecs": 900
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "quality",
+        "subtitleFormat",
+        "includeSegments"
+      ]
+    },
+    {
+      "name": "vtt-subtitles-for-a-web-player",
+      "title": "Generate WebVTT subtitles for a web player",
+      "description": "The same timing work written as .vtt, the format HTML5 video and most web players want.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/sample-5min.m4a"
+        ],
+        "quality": "accurate",
+        "subtitleFormat": "vtt",
+        "includeSegments": true
+      },
+      "options": {
+        "memoryMbytes": 2048,
+        "timeoutSecs": 900
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "quality",
+        "subtitleFormat",
+        "includeSegments"
+      ]
+    },
+    {
+      "name": "subtitles-for-a-podcast-episode",
+      "title": "Subtitles for a podcast episode",
+      "description": "Full-episode subtitles you can attach to an audiogram or a video version of the show.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/test-10min.ogg"
+        ],
+        "quality": "accurate",
+        "subtitleFormat": "srt",
+        "includeSegments": true
+      },
+      "options": {
+        "memoryMbytes": 2048,
+        "timeoutSecs": 900
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "quality",
+        "subtitleFormat",
+        "includeSegments"
+      ]
+    },
+    {
+      "name": "subtitles-with-speaker-names",
+      "title": "Subtitles with speaker labels",
+      "description": "Interviews and panels: each cue carries the speaker, so viewers follow who is talking.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/conversation-4min.ogg"
+        ],
+        "quality": "accurate",
+        "subtitleFormat": "srt",
+        "diarize": true,
+        "speakerCount": 2
+      },
+      "options": {
+        "memoryMbytes": 2048,
+        "timeoutSecs": 900
+      },
+      "datasetView": "speakers",
+      "inputSchemaFields": [
+        "urls",
+        "quality",
+        "subtitleFormat",
+        "diarize",
+        "speakerCount"
+      ]
+    },
+    {
+      "name": "english-subtitles-for-foreign-audio",
+      "title": "English subtitles for foreign-language audio",
+      "description": "Translate mode writes the cues in English, whatever language the speaker used.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/sample-5min.m4a"
+        ],
+        "quality": "accurate",
+        "subtitleFormat": "srt",
+        "translateToEnglish": true
+      },
+      "options": {
+        "memoryMbytes": 2048,
+        "timeoutSecs": 900
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "quality",
+        "subtitleFormat",
+        "translateToEnglish"
+      ]
+    },
+    {
+      "name": "subtitles-for-several-videos-at-once",
+      "title": "Subtitles for several files at once",
+      "description": "Batch a list of media URLs and get one subtitle file per item in a single run.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/sample-5min.m4a",
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/conversation-4min.ogg",
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/test-10min.ogg"
+        ],
+        "quality": "fast",
+        "subtitleFormat": "srt"
+      },
+      "options": {
+        "memoryMbytes": 2048,
+        "timeoutSecs": 900
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "quality",
+        "subtitleFormat"
+      ]
+    },
+    {
+      "name": "accurate-subtitles-for-a-long-video",
+      "title": "Accurate subtitles for a long video",
+      "description": "The careful model on a long recording, where drifting timings would ruin the file.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/test-10min.ogg"
+        ],
+        "quality": "accurate",
+        "subtitleFormat": "srt",
+        "includeSegments": true
+      },
+      "options": {
+        "memoryMbytes": 2048,
+        "timeoutSecs": 900
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "quality",
+        "subtitleFormat",
+        "includeSegments"
+      ]
+    },
+    {
+      "name": "subtitles-with-correct-names-and-brands",
+      "title": "Subtitles with correct names and brands",
+      "description": "A vocabulary hint keeps product names, people and jargon spelled properly in every cue.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/conversation-4min.ogg"
+        ],
+        "quality": "accurate",
+        "subtitleFormat": "srt",
+        "vocabularyHint": "Apify, Actor, Crawlee, Bali"
+      },
+      "options": {
+        "memoryMbytes": 2048,
+        "timeoutSecs": 900
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "quality",
+        "subtitleFormat",
+        "vocabularyHint"
+      ]
+    },
+    {
+      "name": "subtitles-in-the-original-language",
+      "title": "Subtitles in the original spoken language",
+      "description": "Set the language explicitly and keep the cues in it, without any translation step.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/sample-5min.m4a"
+        ],
+        "quality": "accurate",
+        "subtitleFormat": "srt",
+        "language": "en"
+      },
+      "options": {
+        "memoryMbytes": 2048,
+        "timeoutSecs": 900
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "quality",
+        "subtitleFormat",
+        "language"
+      ]
+    }
+  ]
+}

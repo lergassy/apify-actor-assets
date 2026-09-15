@@ -1,0 +1,95 @@
+{
+  "actor": "lergassy~tripcom-scraper",
+  "tasks": [
+    {
+      "name": "trip-com-hotels-with-details",
+      "title": "Trip.com hotels with full details",
+      "description": "Search results enriched with facilities, policies and the score breakdown.",
+      "input": {
+        "mode": "hotels",
+        "cityName": "Bali",
+        "cityId": 723,
+        "checkIn": "2026-11-10",
+        "checkOut": "2026-11-13",
+        "includeHotelDetails": true,
+        "maxHotels": 30
+      },
+      "datasetView": "details",
+      "inputSchemaFields": [
+        "mode",
+        "cityName",
+        "cityId",
+        "checkIn",
+        "checkOut"
+      ]
+    },
+    {
+      "name": "trip-com-hotel-reviews-by-date",
+      "title": "Trip.com reviews from a date range",
+      "description": "Guest reviews limited to the months you care about, not the whole history.",
+      "input": {
+        "mode": "hotels",
+        "cityName": "Bali",
+        "cityId": 723,
+        "checkIn": "2026-11-10",
+        "checkOut": "2026-11-13",
+        "includeReviews": true,
+        "reviewsFrom": "2026-01-01",
+        "maxHotels": 10
+      },
+      "datasetView": "reviews",
+      "inputSchemaFields": [
+        "mode",
+        "cityName",
+        "cityId",
+        "checkIn",
+        "checkOut"
+      ]
+    },
+    {
+      "name": "trip-com-family-room-prices",
+      "title": "Trip.com prices for a family",
+      "description": "Two adults and two children, one room — the price that actually applies to your trip.",
+      "input": {
+        "mode": "hotels",
+        "cityName": "Bangkok",
+        "cityId": 359,
+        "checkIn": "2026-12-20",
+        "checkOut": "2026-12-27",
+        "adults": 2,
+        "children": 2,
+        "maxHotels": 40
+      },
+      "datasetView": "hotels",
+      "inputSchemaFields": [
+        "mode",
+        "cityName",
+        "cityId",
+        "checkIn",
+        "checkOut"
+      ]
+    },
+    {
+      "name": "trip-com-poorly-rated-hotels",
+      "title": "Trip.com hotels below a score",
+      "description": "The other end of the filter: find the weak properties in a market before you invest or compete.",
+      "input": {
+        "mode": "hotels",
+        "cityName": "Bali",
+        "cityId": 723,
+        "checkIn": "2026-11-10",
+        "checkOut": "2026-11-13",
+        "maxReviewScore": 7,
+        "maxHotels": 40
+      },
+      "datasetView": "hotels",
+      "inputSchemaFields": [
+        "mode",
+        "cityName",
+        "cityId",
+        "checkIn",
+        "checkOut"
+      ]
+    }
+  ]
+}

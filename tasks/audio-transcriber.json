@@ -1,0 +1,215 @@
+{
+  "actor": "lergassy~audio-transcriber",
+  "tasks": [
+    {
+      "name": "transcribe-an-interview",
+      "title": "Transcribe an interview recording",
+      "description": "Turn an interview audio file into clean text with timestamps you can quote from.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/sample-5min.m4a"
+        ],
+        "quality": "accurate",
+        "includeSegments": true
+      },
+      "options": {
+        "memoryMbytes": 2048,
+        "timeoutSecs": 900
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "quality",
+        "includeSegments"
+      ]
+    },
+    {
+      "name": "transcribe-a-meeting-recording",
+      "title": "Transcribe a meeting recording",
+      "description": "Upload or link a meeting recording and get the full text plus time-stamped segments for the minutes.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/test-10min.ogg"
+        ],
+        "quality": "accurate",
+        "includeSegments": true
+      },
+      "options": {
+        "memoryMbytes": 2048,
+        "timeoutSecs": 900
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "quality",
+        "includeSegments"
+      ]
+    },
+    {
+      "name": "transcribe-a-lecture-or-webinar",
+      "title": "Transcribe a lecture or webinar",
+      "description": "Long-form talk turned into searchable text, so you can find the moment a topic was mentioned.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/test-10min.ogg"
+        ],
+        "quality": "accurate",
+        "includeSegments": true
+      },
+      "options": {
+        "memoryMbytes": 2048,
+        "timeoutSecs": 900
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "quality",
+        "includeSegments"
+      ]
+    },
+    {
+      "name": "audio-transcription-with-timestamps",
+      "title": "Audio transcription with timestamps",
+      "description": "Every sentence comes back with its start and end time, ready for a player or a clip tool.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/sample-5min.m4a"
+        ],
+        "quality": "fast",
+        "includeSegments": true
+      },
+      "options": {
+        "memoryMbytes": 2048,
+        "timeoutSecs": 900
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "quality",
+        "includeSegments"
+      ]
+    },
+    {
+      "name": "transcribe-audio-with-speaker-labels",
+      "title": "Transcribe audio with speaker labels",
+      "description": "Two people talking, two labelled speakers: the transcript is split by who said what.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/conversation-4min.ogg"
+        ],
+        "quality": "accurate",
+        "diarize": true,
+        "speakerCount": 2,
+        "includeSegments": true
+      },
+      "options": {
+        "memoryMbytes": 2048,
+        "timeoutSecs": 900
+      },
+      "datasetView": "speakers",
+      "inputSchemaFields": [
+        "urls",
+        "quality",
+        "diarize",
+        "speakerCount",
+        "includeSegments"
+      ]
+    },
+    {
+      "name": "transcribe-several-audio-files-at-once",
+      "title": "Transcribe several audio files at once",
+      "description": "Pass a list of audio URLs and get one transcript row per file in a single run.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/sample-5min.m4a",
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/conversation-4min.ogg",
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/test-10min.ogg"
+        ],
+        "quality": "fast",
+        "includeSegments": true
+      },
+      "options": {
+        "memoryMbytes": 2048,
+        "timeoutSecs": 900
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "quality",
+        "includeSegments"
+      ]
+    },
+    {
+      "name": "transcribe-audio-into-chunks-for-rag",
+      "title": "Transcribe audio into chunks for RAG",
+      "description": "Transcript split into overlapping chunks with timestamps — drop them straight into a vector database.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/test-10min.ogg"
+        ],
+        "quality": "accurate",
+        "chunkForRag": true,
+        "chunkSize": 1200,
+        "chunkOverlapSeconds": 2
+      },
+      "options": {
+        "memoryMbytes": 2048,
+        "timeoutSecs": 900
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "quality",
+        "chunkForRag",
+        "chunkSize",
+        "chunkOverlapSeconds"
+      ]
+    },
+    {
+      "name": "accurate-transcription-of-noisy-audio",
+      "title": "Accurate transcription of noisy audio",
+      "description": "Slower, more careful model plus a vocabulary hint for names and terms the model keeps getting wrong.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/conversation-4min.ogg"
+        ],
+        "quality": "accurate",
+        "vocabularyHint": "Apify, Actor, dataset, webhook",
+        "includeSegments": true
+      },
+      "options": {
+        "memoryMbytes": 2048,
+        "timeoutSecs": 900
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "quality",
+        "vocabularyHint",
+        "includeSegments"
+      ]
+    },
+    {
+      "name": "transcribe-a-long-recording",
+      "title": "Transcribe a long recording of several hours",
+      "description": "A multi-hour file handled in one run, returned as full text plus time-stamped segments.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/sample-3h.ogg"
+        ],
+        "quality": "fast",
+        "includeSegments": true
+      },
+      "options": {
+        "memoryMbytes": 2048,
+        "timeoutSecs": 900
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "quality",
+        "includeSegments"
+      ]
+    }
+  ]
+}

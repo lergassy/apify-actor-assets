@@ -1,0 +1,118 @@
+{
+  "actor": "lergassy~document-text-extractor",
+  "tasks": [
+    {
+      "name": "pdf-to-markdown",
+      "title": "Convert a PDF to clean Markdown",
+      "description": "Headings, lists and tables preserved as Markdown — the format LLMs and static sites both like.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/document-text-extractor/sample-report.pdf"
+        ],
+        "includeMarkdown": true,
+        "includeFullText": false,
+        "extractTables": true
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "includeMarkdown",
+        "includeFullText",
+        "extractTables"
+      ]
+    },
+    {
+      "name": "extract-text-page-by-page",
+      "title": "Extract a document's text page by page",
+      "description": "One row per page, so you can cite page numbers and jump straight to the right place.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/document-text-extractor/sample-report.pdf"
+        ],
+        "includePages": true,
+        "includeFullText": true
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "includePages",
+        "includeFullText"
+      ]
+    },
+    {
+      "name": "extract-only-a-page-range",
+      "title": "Extract only certain pages of a PDF",
+      "description": "Pull pages 1-5 of a long report instead of paying for the whole file.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/document-text-extractor/sample-report.pdf"
+        ],
+        "pageRange": "1-5",
+        "includePages": true
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "pageRange",
+        "includePages"
+      ]
+    },
+    {
+      "name": "read-a-scanned-pdf-with-ocr",
+      "title": "Read a scanned PDF with OCR",
+      "description": "No text layer, no problem: scanned pages are run through OCR before the text is returned.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/document-text-extractor/sample-scan.pdf"
+        ],
+        "ocrScannedPages": true,
+        "ocrLanguage": "eng",
+        "ocrMaxPagesPerDocument": 20
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "ocrScannedPages",
+        "ocrLanguage",
+        "ocrMaxPagesPerDocument"
+      ]
+    },
+    {
+      "name": "extract-text-from-several-documents",
+      "title": "Extract text from several documents at once",
+      "description": "A batch of PDFs and Word files in one run, one row per document.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/document-text-extractor/sample-report.pdf",
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/document-text-extractor/sample-contract.docx"
+        ],
+        "includeMarkdown": true,
+        "includeFullText": true
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "includeMarkdown",
+        "includeFullText"
+      ]
+    },
+    {
+      "name": "contract-text-with-tables",
+      "title": "Pull a contract's text and tables",
+      "description": "Word contracts read into Markdown with the payment and schedule tables kept as tables.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/document-text-extractor/sample-contract.docx"
+        ],
+        "extractTables": true,
+        "includeMarkdown": true
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "extractTables",
+        "includeMarkdown"
+      ]
+    }
+  ]
+}

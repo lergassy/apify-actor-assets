@@ -1,0 +1,83 @@
+{
+  "actor": "lergassy~jobs-api",
+  "tasks": [
+    {
+      "name": "jobs-posted-in-the-last-24-hours",
+      "title": "Jobs posted in the last 24 hours",
+      "description": "The freshest postings only — what recruiters and job hunters both want first thing.",
+      "input": {
+        "keywords": [
+          "data engineer"
+        ],
+        "location": "New York, NY",
+        "sources": [
+          "indeed",
+          "linkedin"
+        ],
+        "datePosted": "day",
+        "maxJobsPerQuery": 100
+      },
+      "datasetView": "jobs",
+      "inputSchemaFields": [
+        "keywords",
+        "location",
+        "sources",
+        "datePosted",
+        "maxJobsPerQuery"
+      ]
+    },
+    {
+      "name": "entry-level-jobs-on-linkedin",
+      "title": "Entry-level jobs on LinkedIn",
+      "description": "Filter by experience level so graduate roles are not buried under senior listings.",
+      "input": {
+        "keywords": [
+          "marketing"
+        ],
+        "location": "London",
+        "sources": [
+          "linkedin"
+        ],
+        "experience": [
+          "entry"
+        ],
+        "maxJobsPerQuery": 100
+      },
+      "datasetView": "jobs",
+      "inputSchemaFields": [
+        "keywords",
+        "location",
+        "sources",
+        "experience",
+        "maxJobsPerQuery"
+      ]
+    },
+    {
+      "name": "part-time-and-contract-jobs",
+      "title": "Part-time and contract roles",
+      "description": "Job-type filters applied at the source, so the list matches how people actually want to work.",
+      "input": {
+        "keywords": [
+          "designer"
+        ],
+        "location": "Remote",
+        "sources": [
+          "indeed"
+        ],
+        "jobTypes": [
+          "parttime",
+          "contract"
+        ],
+        "maxJobsPerQuery": 100
+      },
+      "datasetView": "jobs",
+      "inputSchemaFields": [
+        "keywords",
+        "location",
+        "sources",
+        "jobTypes",
+        "maxJobsPerQuery"
+      ]
+    }
+  ]
+}

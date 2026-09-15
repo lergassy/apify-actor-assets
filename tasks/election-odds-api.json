@@ -1,0 +1,117 @@
+{
+  "actor": "lergassy~election-odds-api",
+  "tasks": [
+    {
+      "name": "election-odds-with-price-history",
+      "title": "Election odds with their price history",
+      "description": "How a race's probability moved over the last week, day by day, from the prediction markets.",
+      "input": {
+        "platforms": [
+          "polymarket",
+          "kalshi"
+        ],
+        "mode": "history",
+        "query": "election",
+        "historyDays": 7,
+        "maxMarkets": 25
+      },
+      "datasetView": "history",
+      "inputSchemaFields": [
+        "platforms",
+        "mode",
+        "query",
+        "historyDays",
+        "maxMarkets"
+      ]
+    },
+    {
+      "name": "liquid-election-markets-only",
+      "title": "Only the liquid election markets",
+      "description": "Filter out the thin markets so the odds you read are backed by real money.",
+      "input": {
+        "platforms": [
+          "polymarket",
+          "kalshi"
+        ],
+        "mode": "markets",
+        "query": "election",
+        "minVolume": 50000,
+        "minLiquidity": 10000,
+        "maxMarkets": 25
+      },
+      "datasetView": "markets",
+      "inputSchemaFields": [
+        "platforms",
+        "mode",
+        "query",
+        "minVolume",
+        "minLiquidity"
+      ]
+    },
+    {
+      "name": "senate-and-house-race-odds",
+      "title": "Senate and House race odds",
+      "description": "Congressional races with every candidate's implied probability side by side.",
+      "input": {
+        "platforms": [
+          "polymarket",
+          "kalshi"
+        ],
+        "mode": "markets",
+        "query": "senate",
+        "maxMarkets": 30,
+        "sortBy": "volume24h"
+      },
+      "datasetView": "markets",
+      "inputSchemaFields": [
+        "platforms",
+        "mode",
+        "query",
+        "maxMarkets",
+        "sortBy"
+      ]
+    },
+    {
+      "name": "election-markets-by-event",
+      "title": "Election markets grouped by event",
+      "description": "One row per race rather than per contract, so a multi-candidate race reads as a single line.",
+      "input": {
+        "platforms": [
+          "polymarket"
+        ],
+        "mode": "events",
+        "query": "election",
+        "maxMarkets": 25
+      },
+      "datasetView": "events",
+      "inputSchemaFields": [
+        "platforms",
+        "mode",
+        "query",
+        "maxMarkets"
+      ]
+    },
+    {
+      "name": "closed-election-markets-and-results",
+      "title": "Resolved election markets and how they ended",
+      "description": "Settled races with their final prices — the backtest data for your model.",
+      "input": {
+        "platforms": [
+          "polymarket"
+        ],
+        "mode": "markets",
+        "query": "election",
+        "includeClosed": true,
+        "maxMarkets": 50
+      },
+      "datasetView": "markets",
+      "inputSchemaFields": [
+        "platforms",
+        "mode",
+        "query",
+        "includeClosed",
+        "maxMarkets"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "actor": "lergassy~dfs-props-scraper",
+  "tasks": [
+    {
+      "name": "mlb-player-props",
+      "title": "MLB player props from the DFS apps",
+      "description": "Strikeouts, hits and total bases lines for today's slate with the app that posts them.",
+      "input": {
+        "platforms": [
+          "prizepicks",
+          "underdog"
+        ],
+        "mode": "props",
+        "leagues": [
+          "MLB"
+        ],
+        "maxRows": 200
+      },
+      "datasetView": "props",
+      "inputSchemaFields": [
+        "platforms",
+        "mode",
+        "leagues",
+        "maxRows"
+      ]
+    },
+    {
+      "name": "props-for-one-stat",
+      "title": "Every line for one stat market",
+      "description": "Pick the market you model — points, rebounds, passing yards — and get all of it in one table.",
+      "input": {
+        "platforms": [
+          "prizepicks",
+          "underdog"
+        ],
+        "mode": "props",
+        "markets": [
+          "Points"
+        ],
+        "maxRows": 200
+      },
+      "datasetView": "props",
+      "inputSchemaFields": [
+        "platforms",
+        "mode",
+        "markets",
+        "maxRows"
+      ]
+    },
+    {
+      "name": "lines-that-differ-between-apps",
+      "title": "Where the apps disagree on a line",
+      "description": "Compare mode puts PrizePicks and Underdog side by side so the mismatches are obvious.",
+      "input": {
+        "platforms": [
+          "prizepicks",
+          "underdog"
+        ],
+        "mode": "compare",
+        "maxRows": 200
+      },
+      "datasetView": "comparisons",
+      "inputSchemaFields": [
+        "platforms",
+        "mode",
+        "maxRows"
+      ]
+    },
+    {
+      "name": "props-for-a-list-of-players",
+      "title": "Props for a list of players",
+      "description": "Your bet slip's worth of players, every market they appear in, one run.",
+      "input": {
+        "platforms": [
+          "prizepicks",
+          "underdog"
+        ],
+        "mode": "props",
+        "players": [
+          "Patrick Mahomes",
+          "Josh Allen"
+        ],
+        "maxRows": 100
+      },
+      "datasetView": "props",
+      "inputSchemaFields": [
+        "platforms",
+        "mode",
+        "players",
+        "maxRows"
+      ]
+    }
+  ]
+}

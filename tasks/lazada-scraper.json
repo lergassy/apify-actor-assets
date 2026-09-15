@@ -1,0 +1,91 @@
+{
+  "actor": "lergassy~lazada-scraper",
+  "tasks": [
+    {
+      "name": "lazada-products-in-thailand",
+      "title": "Search Lazada products in Thailand",
+      "description": "The Thai marketplace with local prices, ratings and sold counts.",
+      "input": {
+        "mode": "search",
+        "country": "TH",
+        "searchTerms": [
+          "air fryer"
+        ],
+        "maxItems": 40
+      },
+      "datasetView": "products",
+      "inputSchemaFields": [
+        "mode",
+        "country",
+        "searchTerms",
+        "maxItems"
+      ]
+    },
+    {
+      "name": "newest-lazada-listings",
+      "title": "Newest Lazada listings for a keyword",
+      "description": "Sorted by newest, so you see what just went up rather than the same old bestsellers.",
+      "input": {
+        "mode": "search",
+        "country": "ID",
+        "searchTerms": [
+          "iphone case"
+        ],
+        "sortBy": "newest",
+        "maxItems": 40
+      },
+      "datasetView": "products",
+      "inputSchemaFields": [
+        "mode",
+        "country",
+        "searchTerms",
+        "sortBy",
+        "maxItems"
+      ]
+    },
+    {
+      "name": "well-rated-lazada-products",
+      "title": "Lazada products above a rating",
+      "description": "Filter out the junk with a minimum rating before the list ever reaches you.",
+      "input": {
+        "mode": "search",
+        "country": "ID",
+        "searchTerms": [
+          "headphones"
+        ],
+        "minRating": 4.5,
+        "maxItems": 40
+      },
+      "datasetView": "products",
+      "inputSchemaFields": [
+        "mode",
+        "country",
+        "searchTerms",
+        "minRating",
+        "maxItems"
+      ]
+    },
+    {
+      "name": "five-star-lazada-reviews",
+      "title": "Five-star reviews of a product",
+      "description": "The rating filter applied to reviews — read what buyers liked, in bulk.",
+      "input": {
+        "mode": "product_reviews",
+        "startUrls": [
+          {
+            "url": "https://www.lazada.co.id/products/apple-iphone-15-i8345080284.html"
+          }
+        ],
+        "reviewsRating": "5",
+        "maxReviewsPerProduct": 100
+      },
+      "datasetView": "reviews",
+      "inputSchemaFields": [
+        "mode",
+        "startUrls",
+        "reviewsRating",
+        "maxReviewsPerProduct"
+      ]
+    }
+  ]
+}

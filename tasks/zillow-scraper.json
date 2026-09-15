@@ -1,0 +1,110 @@
+{
+  "actor": "lergassy~zillow-scraper",
+  "tasks": [
+    {
+      "name": "new-listings-in-the-last-week",
+      "title": "Homes listed in the last week",
+      "description": "Fresh inventory only, sorted newest first — the list agents check every morning.",
+      "input": {
+        "listingType": "forSale",
+        "locations": [
+          "Austin, TX"
+        ],
+        "daysOnZillow": "7",
+        "sort": "newest",
+        "maxItems": 100
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "listingType",
+        "locations",
+        "daysOnZillow",
+        "sort",
+        "maxItems"
+      ]
+    },
+    {
+      "name": "three-bedroom-homes-in-a-price-range",
+      "title": "Three-bedroom homes in a price range",
+      "description": "Beds, baths and price filters applied at the source instead of in your spreadsheet.",
+      "input": {
+        "listingType": "forSale",
+        "locations": [
+          "Phoenix, AZ"
+        ],
+        "bedsMin": 3,
+        "priceMin": 300000,
+        "priceMax": 600000,
+        "maxItems": 100
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "listingType",
+        "locations",
+        "bedsMin",
+        "priceMin",
+        "priceMax"
+      ]
+    },
+    {
+      "name": "rentals-under-a-monthly-budget",
+      "title": "Rentals under a monthly budget",
+      "description": "The rental market in a city filtered by price, with beds, baths and address.",
+      "input": {
+        "listingType": "forRent",
+        "locations": [
+          "Denver, CO"
+        ],
+        "priceMax": 2500,
+        "maxItems": 100
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "listingType",
+        "locations",
+        "priceMax",
+        "maxItems"
+      ]
+    },
+    {
+      "name": "homes-with-full-property-details",
+      "title": "Search results with full property details",
+      "description": "Each result enriched with the detail page: taxes, year built, description and price history.",
+      "input": {
+        "listingType": "forSale",
+        "locations": [
+          "Austin, TX"
+        ],
+        "includeDetails": true,
+        "maxItems": 50
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "listingType",
+        "locations",
+        "includeDetails",
+        "maxItems"
+      ]
+    },
+    {
+      "name": "recently-sold-homes-for-comps",
+      "title": "Recently sold homes for comparables",
+      "description": "Sold prices in a neighbourhood — the comps behind any valuation.",
+      "input": {
+        "listingType": "sold",
+        "locations": [
+          "Seattle, WA"
+        ],
+        "daysOnZillow": "90",
+        "maxItems": 100
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "listingType",
+        "locations",
+        "daysOnZillow",
+        "maxItems"
+      ]
+    }
+  ]
+}

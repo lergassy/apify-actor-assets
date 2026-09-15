@@ -1,0 +1,139 @@
+{
+  "actor": "lergassy~software-reviews-scraper",
+  "tasks": [
+    {
+      "name": "capterra-product-reviews",
+      "title": "Scrape Capterra reviews of a product",
+      "description": "Capterra's review pages read into rows with rating, pros, cons and reviewer role.",
+      "input": {
+        "searchTerms": [
+          "Slack"
+        ],
+        "searchSites": [
+          "capterra"
+        ],
+        "maxReviews": 100
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "searchTerms",
+        "searchSites",
+        "maxReviews"
+      ]
+    },
+    {
+      "name": "reviews-from-three-review-sites",
+      "title": "One product, three review sites",
+      "description": "Capterra, Software Advice and TrustRadius in a single run so the sample is not one site's bias.",
+      "input": {
+        "searchTerms": [
+          "Notion"
+        ],
+        "searchSites": [
+          "capterra",
+          "softwareadvice",
+          "trustradius"
+        ],
+        "maxReviews": 60
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "searchTerms",
+        "searchSites",
+        "maxReviews"
+      ]
+    },
+    {
+      "name": "recent-software-reviews-only",
+      "title": "Only reviews from the last months",
+      "description": "Set a published-after date and the old reviews of an old version drop out.",
+      "input": {
+        "searchTerms": [
+          "Figma"
+        ],
+        "searchSites": [
+          "trustradius"
+        ],
+        "maxReviews": 100,
+        "publishedAfter": "2026-03-01",
+        "sortReviews": "newest"
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "searchTerms",
+        "searchSites",
+        "maxReviews",
+        "publishedAfter",
+        "sortReviews"
+      ]
+    },
+    {
+      "name": "positive-software-reviews-only",
+      "title": "Only the positive reviews",
+      "description": "Four stars and up: the language happy customers use, ready for your marketing copy.",
+      "input": {
+        "searchTerms": [
+          "Zoom"
+        ],
+        "searchSites": [
+          "trustradius"
+        ],
+        "maxReviews": 100,
+        "minRating": 4
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "searchTerms",
+        "searchSites",
+        "maxReviews",
+        "minRating"
+      ]
+    },
+    {
+      "name": "reviews-for-several-products-at-once",
+      "title": "Reviews for several products at once",
+      "description": "A shortlist of tools reviewed in one run, one dataset to compare them in.",
+      "input": {
+        "searchTerms": [
+          "Asana",
+          "Trello",
+          "ClickUp"
+        ],
+        "searchSites": [
+          "trustradius"
+        ],
+        "maxProductsPerTerm": 1,
+        "maxReviews": 60
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "searchTerms",
+        "searchSites",
+        "maxProductsPerTerm",
+        "maxReviews"
+      ]
+    },
+    {
+      "name": "product-summary-with-rating-breakdown",
+      "title": "Product summary row with the rating breakdown",
+      "description": "The header numbers — overall score, review count, star distribution — alongside the reviews.",
+      "input": {
+        "searchTerms": [
+          "HubSpot"
+        ],
+        "searchSites": [
+          "trustradius"
+        ],
+        "maxReviews": 50,
+        "includeProductRow": true
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "searchTerms",
+        "searchSites",
+        "maxReviews",
+        "includeProductRow"
+      ]
+    }
+  ]
+}

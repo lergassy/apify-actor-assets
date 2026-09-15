@@ -1,0 +1,46 @@
+{
+  "actor": "lergassy~google-flights-scraper",
+  "tasks": [
+    {
+      "name": "flights-with-a-price-calendar",
+      "title": "Route prices with a two-month calendar",
+      "description": "The flight list plus a day-by-day price calendar, so you see whether to move your dates.",
+      "input": {
+        "origin": "DPS",
+        "destination": "SIN",
+        "departureDate": "2027-03-15",
+        "calendarDays": 60,
+        "maxResults": 50
+      },
+      "datasetView": "calendar",
+      "inputSchemaFields": [
+        "origin",
+        "destination",
+        "departureDate",
+        "calendarDays",
+        "maxResults"
+      ]
+    },
+    {
+      "name": "direct-flights-only",
+      "title": "Nonstop flights only",
+      "description": "Cut every itinerary with a connection and keep the direct ones.",
+      "input": {
+        "origin": "DPS",
+        "destination": "SIN",
+        "departureDate": "2027-03-15",
+        "maxStops": "0",
+        "sortBy": "price",
+        "maxResults": 50
+      },
+      "datasetView": "flights",
+      "inputSchemaFields": [
+        "origin",
+        "destination",
+        "departureDate",
+        "maxStops",
+        "sortBy"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,219 @@
+{
+  "actor": "lergassy~whisper-transcriber",
+  "tasks": [
+    {
+      "name": "whisper-transcription-of-an-audio-url",
+      "title": "Whisper transcription of an audio URL",
+      "description": "Point Whisper at any public audio link and get the transcript back as data, no setup and no GPU.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/sample-5min.m4a"
+        ],
+        "quality": "accurate",
+        "includeSegments": true
+      },
+      "options": {
+        "memoryMbytes": 2048,
+        "timeoutSecs": 900
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "quality",
+        "includeSegments"
+      ]
+    },
+    {
+      "name": "fast-whisper-transcription",
+      "title": "Fast Whisper transcription for long files",
+      "description": "The fast model for when you need the text quickly and can live with a few rough edges.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/test-10min.ogg"
+        ],
+        "quality": "fast",
+        "includeSegments": true
+      },
+      "options": {
+        "memoryMbytes": 2048,
+        "timeoutSecs": 900
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "quality",
+        "includeSegments"
+      ]
+    },
+    {
+      "name": "whisper-with-speaker-diarization",
+      "title": "Whisper with speaker diarization",
+      "description": "Whisper transcript plus diarization, so each line carries the speaker it belongs to.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/conversation-4min.ogg"
+        ],
+        "quality": "accurate",
+        "diarize": true,
+        "speakerCount": 2,
+        "includeSegments": true
+      },
+      "options": {
+        "memoryMbytes": 2048,
+        "timeoutSecs": 900
+      },
+      "datasetView": "speakers",
+      "inputSchemaFields": [
+        "urls",
+        "quality",
+        "diarize",
+        "speakerCount",
+        "includeSegments"
+      ]
+    },
+    {
+      "name": "whisper-transcription-with-timestamps",
+      "title": "Whisper transcription with word timing",
+      "description": "Time-stamped segments for every sentence, the format editors and subtitle tools expect.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/sample-5min.m4a"
+        ],
+        "quality": "accurate",
+        "includeSegments": true
+      },
+      "options": {
+        "memoryMbytes": 2048,
+        "timeoutSecs": 900
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "quality",
+        "includeSegments"
+      ]
+    },
+    {
+      "name": "whisper-translate-audio-to-english",
+      "title": "Whisper: translate audio to English",
+      "description": "Whisper's translate mode writes the transcript in English whatever language was spoken.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/sample-5min.m4a"
+        ],
+        "quality": "accurate",
+        "translateToEnglish": true,
+        "includeSegments": true
+      },
+      "options": {
+        "memoryMbytes": 2048,
+        "timeoutSecs": 900
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "quality",
+        "translateToEnglish",
+        "includeSegments"
+      ]
+    },
+    {
+      "name": "whisper-batch-transcription",
+      "title": "Whisper batch transcription of many files",
+      "description": "A queue of audio URLs transcribed in one run, three at a time.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/sample-5min.m4a",
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/conversation-4min.ogg",
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/test-10min.ogg"
+        ],
+        "quality": "fast",
+        "maxConcurrency": 3,
+        "includeSegments": true
+      },
+      "options": {
+        "memoryMbytes": 2048,
+        "timeoutSecs": 900
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "quality",
+        "maxConcurrency",
+        "includeSegments"
+      ]
+    },
+    {
+      "name": "whisper-transcription-in-a-chosen-language",
+      "title": "Whisper transcription in a chosen language",
+      "description": "Name the spoken language instead of letting Whisper guess — faster and more accurate on short clips.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/sample-5min.m4a"
+        ],
+        "quality": "accurate",
+        "language": "en",
+        "includeSegments": true
+      },
+      "options": {
+        "memoryMbytes": 2048,
+        "timeoutSecs": 900
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "quality",
+        "language",
+        "includeSegments"
+      ]
+    },
+    {
+      "name": "whisper-with-custom-vocabulary",
+      "title": "Whisper with custom vocabulary and names",
+      "description": "Feed product names, brands and jargon as a hint so Whisper spells them the way you do.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/conversation-4min.ogg"
+        ],
+        "quality": "accurate",
+        "vocabularyHint": "Apify, Actor, Crawlee, Playwright",
+        "includeSegments": true
+      },
+      "options": {
+        "memoryMbytes": 2048,
+        "timeoutSecs": 900
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "quality",
+        "vocabularyHint",
+        "includeSegments"
+      ]
+    },
+    {
+      "name": "whisper-srt-subtitles",
+      "title": "Whisper SRT subtitles from audio",
+      "description": "Whisper output written straight into an SRT subtitle file alongside the transcript.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/sample-5min.m4a"
+        ],
+        "quality": "accurate",
+        "subtitleFormat": "srt",
+        "includeSegments": true
+      },
+      "options": {
+        "memoryMbytes": 2048,
+        "timeoutSecs": 900
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "quality",
+        "subtitleFormat",
+        "includeSegments"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,167 @@
+{
+  "actor": "lergassy~speech-to-text",
+  "tasks": [
+    {
+      "name": "speech-to-text-for-an-audio-url",
+      "title": "Speech to text for any audio URL",
+      "description": "Send a link, get the text: a speech-to-text API call with no keys and no infrastructure.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/sample-5min.m4a"
+        ],
+        "quality": "fast",
+        "includeSegments": true
+      },
+      "options": {
+        "memoryMbytes": 2048,
+        "timeoutSecs": 900
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "quality",
+        "includeSegments"
+      ]
+    },
+    {
+      "name": "speech-to-text-with-timestamps",
+      "title": "Speech to text with timestamps",
+      "description": "Sentence-level segments with start and end times, ready for search and clipping.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/sample-5min.m4a"
+        ],
+        "quality": "accurate",
+        "includeSegments": true
+      },
+      "options": {
+        "memoryMbytes": 2048,
+        "timeoutSecs": 900
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "quality",
+        "includeSegments"
+      ]
+    },
+    {
+      "name": "bulk-speech-to-text",
+      "title": "Bulk speech to text for a list of files",
+      "description": "A whole folder's worth of recordings transcribed in one run, one row per file.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/sample-5min.m4a",
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/conversation-4min.ogg",
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/test-10min.ogg"
+        ],
+        "quality": "fast",
+        "maxConcurrency": 3
+      },
+      "options": {
+        "memoryMbytes": 2048,
+        "timeoutSecs": 900
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "quality",
+        "maxConcurrency"
+      ]
+    },
+    {
+      "name": "speech-to-text-with-translation-to-english",
+      "title": "Speech to text with translation to English",
+      "description": "Transcribe and translate in the same pass when your recordings are not in English.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/sample-5min.m4a"
+        ],
+        "quality": "accurate",
+        "translateToEnglish": true,
+        "includeSegments": true
+      },
+      "options": {
+        "memoryMbytes": 2048,
+        "timeoutSecs": 900
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "quality",
+        "translateToEnglish",
+        "includeSegments"
+      ]
+    },
+    {
+      "name": "speech-to-text-chunks-for-rag",
+      "title": "Speech to text chunks for a RAG pipeline",
+      "description": "Overlapping, time-stamped chunks sized for embeddings — no post-processing needed.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/test-10min.ogg"
+        ],
+        "quality": "accurate",
+        "chunkForRag": true,
+        "chunkSize": 1200,
+        "chunkOverlapSeconds": 2
+      },
+      "options": {
+        "memoryMbytes": 2048,
+        "timeoutSecs": 900
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "quality",
+        "chunkForRag",
+        "chunkSize",
+        "chunkOverlapSeconds"
+      ]
+    },
+    {
+      "name": "speech-to-text-with-custom-vocabulary",
+      "title": "Speech to text with custom vocabulary",
+      "description": "Names, brands and technical terms spelled correctly because you listed them up front.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/conversation-4min.ogg"
+        ],
+        "quality": "accurate",
+        "vocabularyHint": "Apify, Actor, dataset, Crawlee"
+      },
+      "options": {
+        "memoryMbytes": 2048,
+        "timeoutSecs": 900
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "quality",
+        "vocabularyHint"
+      ]
+    },
+    {
+      "name": "speech-to-text-for-a-long-recording",
+      "title": "Speech to text for a multi-hour recording",
+      "description": "Hours of audio handled in a single run with a generous timeout.",
+      "input": {
+        "urls": [
+          "https://raw.githubusercontent.com/lergassy/apify-actor-assets/main/audio-samples/sample-3h.ogg"
+        ],
+        "quality": "fast",
+        "includeSegments": true
+      },
+      "options": {
+        "memoryMbytes": 2048,
+        "timeoutSecs": 900
+      },
+      "datasetView": "overview",
+      "inputSchemaFields": [
+        "urls",
+        "quality",
+        "includeSegments"
+      ]
+    }
+  ]
+}

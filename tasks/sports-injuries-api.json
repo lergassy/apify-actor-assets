@@ -1,0 +1,106 @@
+{
+  "actor": "lergassy~sports-injuries-api",
+  "tasks": [
+    {
+      "name": "injury-report-for-one-team",
+      "title": "Injury report for a single team",
+      "description": "Every listed player for the team you follow, with status, position and the note behind it.",
+      "input": {
+        "mode": "injuries",
+        "leagues": [
+          "nfl"
+        ],
+        "teams": [
+          "Kansas City Chiefs"
+        ],
+        "includePlayers": true
+      },
+      "datasetView": "injuries",
+      "inputSchemaFields": [
+        "mode",
+        "leagues",
+        "teams",
+        "includePlayers"
+      ]
+    },
+    {
+      "name": "players-out-across-all-leagues",
+      "title": "Players ruled out across all four leagues",
+      "description": "NFL, NBA, MLB and NHL in one pull, filtered to those who will not play.",
+      "input": {
+        "mode": "injuries",
+        "leagues": [
+          "nfl",
+          "nba",
+          "mlb",
+          "nhl"
+        ],
+        "outOnly": true
+      },
+      "datasetView": "injuries",
+      "inputSchemaFields": [
+        "mode",
+        "leagues",
+        "outOnly"
+      ]
+    },
+    {
+      "name": "quarterback-injuries",
+      "title": "Injuries by position",
+      "description": "Only the positions that move a line — quarterbacks, starting pitchers, point guards.",
+      "input": {
+        "mode": "injuries",
+        "leagues": [
+          "nfl"
+        ],
+        "positions": [
+          "QB"
+        ],
+        "includePlayers": true
+      },
+      "datasetView": "injuries",
+      "inputSchemaFields": [
+        "mode",
+        "leagues",
+        "positions",
+        "includePlayers"
+      ]
+    },
+    {
+      "name": "team-injury-counts",
+      "title": "How many players each team is missing",
+      "description": "A team-level table: who is thinnest this week, before you look at any individual name.",
+      "input": {
+        "mode": "teams",
+        "leagues": [
+          "nba"
+        ],
+        "outOnly": true
+      },
+      "datasetView": "teams",
+      "inputSchemaFields": [
+        "mode",
+        "leagues",
+        "outOnly"
+      ]
+    },
+    {
+      "name": "upcoming-games-with-injury-context",
+      "title": "Upcoming games with injury context",
+      "description": "The next week's schedule with each side's injury list attached to the fixture.",
+      "input": {
+        "mode": "games",
+        "leagues": [
+          "nfl"
+        ],
+        "daysAhead": 7
+      },
+      "datasetView": "games",
+      "inputSchemaFields": [
+        "mode",
+        "leagues",
+        "daysAhead"
+      ]
+    }
+  ]
+}
