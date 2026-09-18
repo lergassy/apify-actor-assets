@@ -1,0 +1,27 @@
+{
+  "width": 1920,
+  "introSeconds": 6,
+  "captionY": 0.955,
+  "intro": {
+    "title": "Meta Ad Library Scraper",
+    "subtitle": "Facebook and Instagram ads as flat rows — no login, no API review",
+    "bullets": [
+      "Ask for 30, get 30 — the cap is checked before every request",
+      "$1 per 1,000 ads · error rows are free · no start fee",
+      "Filters re-checked on delivery, so you never pay for rows you filtered out",
+      "One flat row per ad — not Meta's nested JSON"
+    ],
+    "footer": "apify.com/lergassy/meta-ad-library-scraper"
+  },
+  "captions": [
+    { "from": 0.5, "to": 7.0, "text": "$1 per 1,000 ads", "note": "The most-used Actor in this niche charges $5.80" },
+    { "from": 8.0, "to": 15.0, "text": "Keyword or advertiser page ID", "note": "Facebook, Instagram, Messenger, Audience Network, Threads" },
+    { "from": 18.0, "to": 26.0, "text": "Asked for 30 ads", "note": "The cap is enforced before every request — runs cannot overshoot it" },
+    { "from": 30.0, "to": 37.0, "text": "30 results · 6 seconds · $0.001", "note": "Ad copy, CTA, format, platforms and dates on one row" },
+    { "from": 38.0, "to": 45.0, "text": "isDynamicTemplate flags catalogue ads", "note": "Meta serves those headlines as {{product.name}} — the flag says so" },
+    { "from": 48.5, "to": 52.0, "text": "Advertisers view", "note": "Page name, ID, followers, categories and variant count" },
+    { "from": 55.5, "to": 60.5, "text": "Spend and reach are empty here — and that is honest", "note": "Meta publishes them only for political ads. Set Ad type to political and they fill in" },
+    { "from": 62.0, "to": 70.0, "text": "All fields", "note": "Media URLs, card texts, country, CTA type, Ad Library link" },
+    { "from": 71.0, "to": 78.0, "text": "Export JSON, CSV or Excel — or call the API", "note": "Google Sheets, n8n, Make, a database or an AI agent" }
+  ]
+}
